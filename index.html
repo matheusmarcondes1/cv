@@ -4,17 +4,16 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Matheus Marcondes — Résumé</title>
-<meta name="description" content="Matheus Marcondes — Control & Automation Engineering (UFMG), emphasis in Biomedical Engineering. Founder of NeuroDynamics. Brain–computer interfaces, FES, embedded systems and R&D management." />
-<meta name="author" content="Matheus Marcondes de Oliveira" />
+<meta name="description" content="Matheus Marcondes — Control & Automation Engineering student at UFMG, working in HealthTech and medical-device R&D. Founder of NeuroDynamics; Continuous Improvement Intern at Abbott." />
+<meta name="author" content="Matheus Marcondes" />
 <meta name="theme-color" content="#f3f2ef" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='4' fill='%231b1a18'/%3E%3C/svg%3E" />
 <style>
   :root{
     --bg:#f3f2ef;          /* refined off-white, faint warm bias */
     --ink:#1b1a18;         /* near-black */
-    --muted:#b3b0aa;       /* light warm gray — roles, dates, headers */
-    --muted-2:#c3c0ba;     /* even lighter, for the faintest labels */
-    --rule:rgba(27,26,24,.10);
+    --muted:#b3b0aa;       /* light warm gray — secondary text */
+    --rule:rgba(27,26,24,.12);
     --ink-rgb:27,26,24;
     --muted-rgb:179,176,170;
     color-scheme: light;
@@ -36,87 +35,109 @@
   /* whisper-faint spotlight that follows the cursor */
   .vignette{
     position:fixed; inset:0; z-index:0; pointer-events:none;
-    background:radial-gradient(circle 640px at var(--mx,50%) var(--my,45%),
+    background:radial-gradient(circle 640px at var(--mx,50%) var(--my,40%),
       rgba(0,0,0,0) 0%, rgba(24,22,19,.022) 78%);
   }
 
-  .page{ position:relative; z-index:1; max-width:900px; margin:0 auto;
-    padding:clamp(4rem,13vh,8.5rem) clamp(1.5rem,6vw,3rem) 7rem; }
+  .page{ position:relative; z-index:1; max-width:1000px; margin:0 auto;
+    padding:clamp(3.5rem,10vh,6.5rem) clamp(1.5rem,6vw,3.5rem) 6rem; }
 
-  /* two-column: right-aligned label · content */
-  .row{
-    display:grid; grid-template-columns:172px 1fr; column-gap:clamp(2rem,5vw,3.4rem);
-    align-items:start;
-  }
-  .row + .row{ margin-top:clamp(3.4rem,7vh,5rem); }
-  .label{ text-align:right; font-size:1.15rem; font-weight:500; color:var(--ink);
-    letter-spacing:-.005em; line-height:1.3; padding-top:.1rem; }
+  /* ---------- masthead ---------- */
+  .masthead{ display:flex; justify-content:space-between; align-items:flex-start;
+    gap:2rem 3rem; flex-wrap:wrap; padding-bottom:1.8rem; border-bottom:1px solid var(--rule); }
+  .brand h1{ margin:0; font-weight:300; text-transform:uppercase; line-height:1.02;
+    font-size:clamp(2rem,5.2vw,3.1rem); letter-spacing:.16em; }
+  .brand h1 .ln{ display:block; font-weight:500; }
+  .brand .sub{ margin:.9rem 0 0; font-size:.72rem; letter-spacing:.2em; text-transform:uppercase;
+    color:var(--muted); }
+  .contact{ display:flex; flex-direction:column; gap:.34rem; text-align:right;
+    font-size:.82rem; padding-top:.4rem; }
+  .contact span{ color:var(--muted); }
 
-  /* header / name */
-  .name{ font-size:1.4rem; font-weight:500; letter-spacing:-.01em; }
-  .contact{ display:flex; flex-direction:column; gap:.34rem; font-size:.95rem; padding-top:.15rem; }
-  .contact a{ color:var(--ink); text-decoration:none; }
+  /* ---------- about ---------- */
+  .about{ padding:2.4rem 0; border-bottom:1px solid var(--rule); }
+  .sec-title{ margin:0 0 1.1rem; font-size:.72rem; font-weight:600; letter-spacing:.22em;
+    text-transform:uppercase; color:var(--ink); }
+  .about p{ margin:0; max-width:82ch; font-size:1rem; line-height:1.62; }
 
-  /* experience entries */
-  .entry + .entry{ margin-top:2rem; }
-  .entry h3{ margin:0; font-size:1.15rem; font-weight:400; letter-spacing:-.005em; line-height:1.35; }
-  .entry h3 .org{ font-weight:700; color:var(--ink); }
-  .entry h3 .role{ color:var(--muted); }
-  .entry p{ margin:.5rem 0 0; font-size:.95rem; line-height:1.55; max-width:60ch; color:var(--ink); }
-  .entry .meta{ margin-top:.6rem; font-size:.9rem; color:var(--muted); }
+  /* ---------- two columns ---------- */
+  .cols{ display:grid; grid-template-columns:250px 1fr; gap:clamp(2rem,5vw,4rem);
+    align-items:start; padding-top:2.4rem; }
+  .aside > section{ margin-bottom:2.3rem; }
+  .aside > section:last-child{ margin-bottom:0; }
+  .main > section{ margin-bottom:2.6rem; }
+  .main > section:last-child{ margin-bottom:0; }
 
-  /* external-link org names with a discreet arrow */
-  .lnk{ color:inherit; text-decoration:none; position:relative; white-space:nowrap;
-    border-bottom:1px solid transparent; transition:border-color .2s ease; will-change:transform; }
-  .lnk .arrow{ display:inline-block; font-weight:400; font-size:.72em; color:var(--muted);
-    margin-left:.14em; opacity:0; transform:translate(-3px,3px);
-    transition:opacity .22s ease, transform .22s cubic-bezier(.34,1.56,.64,1); }
+  /* education (aside) */
+  .edu .item + .item{ margin-top:1.1rem; }
+  .edu .d{ font-size:.92rem; font-weight:600; line-height:1.35; }
+  .edu .m{ margin-top:.15rem; font-size:.82rem; color:var(--muted); line-height:1.4; }
+
+  /* skills (aside) */
+  .grp + .grp{ margin-top:1rem; }
+  .grp .k{ display:block; font-size:.82rem; font-weight:600; margin-bottom:.15rem; }
+  .grp .v{ font-size:.82rem; color:var(--muted); line-height:1.5; }
+
+  /* languages / governance (aside) */
+  .mini .item + .item{ margin-top:.7rem; }
+  .mini .d{ font-size:.86rem; font-weight:500; line-height:1.35; }
+  .mini .m{ font-size:.8rem; color:var(--muted); line-height:1.4; }
+  .mini .note{ margin-top:.7rem; font-size:.8rem; color:var(--muted); line-height:1.5; }
+
+  /* experience (main) */
+  .job + .job{ margin-top:1.9rem; }
+  .job h3{ margin:0; font-size:1.02rem; font-weight:700; letter-spacing:-.005em; }
+  .job .org{ margin:.22rem 0 0; font-size:.86rem; color:var(--muted); line-height:1.45; }
+  .job .org .lnk{ color:var(--ink); font-weight:500; }
+  .job p{ margin:.6rem 0 0; font-size:.94rem; line-height:1.55; max-width:64ch; }
+  .job ul{ margin:.55rem 0 0; padding:0; list-style:none; max-width:64ch; }
+  .job li{ position:relative; padding-left:1.05rem; font-size:.92rem; line-height:1.5;
+    margin-bottom:.4rem; }
+  .job li::before{ content:""; position:absolute; left:0; top:.62em; width:.42rem; height:1px;
+    background:var(--muted); }
+
+  /* courses (main) */
+  .courses ul{ margin:0; padding:0; list-style:none; }
+  .courses li{ font-size:.92rem; line-height:1.45; margin-bottom:.55rem; }
+  .courses li:last-child{ margin-bottom:0; }
+  .courses li .prov{ color:var(--muted); }
+
+  /* external-link names with a discreet arrow (no motion) */
+  .lnk{ color:inherit; text-decoration:none; border-bottom:1px solid transparent;
+    transition:border-color .2s ease, color .2s ease; white-space:nowrap; }
+  .lnk .arrow{ display:inline-block; font-size:.74em; color:var(--muted); margin-left:.12em;
+    opacity:0; transition:opacity .2s ease; }
   .lnk:hover{ border-bottom-color:var(--rule); }
-  .lnk:hover .arrow{ opacity:1; transform:translate(0,0); }
+  .lnk:hover .arrow{ opacity:1; }
   .lnk:focus-visible{ outline:2px solid var(--ink); outline-offset:3px; border-radius:2px; }
 
-  /* skills: four columns */
-  .skills{ display:grid; grid-template-columns:repeat(4,1fr); column-gap:clamp(1rem,2.5vw,1.8rem); row-gap:0; }
-  .skills .col h4{ margin:0 0 .55rem; font-size:1.0rem; font-weight:400; color:var(--muted); }
-  .skills .col ul{ list-style:none; margin:0; padding:0; }
-  .skills .col li{ font-size:.95rem; line-height:1.85; }
-
-  /* education */
-  .entry .sub{ margin:.4rem 0 0; font-size:.95rem; line-height:1.5; }
-  .entry .also{ margin-top:.5rem; font-size:.9rem; color:var(--muted); }
-
-  /* honors */
-  .honors{ list-style:none; margin:0; padding:0; }
-  .honors li{ font-size:.95rem; line-height:1.7; }
-
-  /* the gray, cursor-reactive bits */
   .dim{ color:var(--muted); }
 
   /* responsive */
-  @media (max-width:760px){
-    .row{ grid-template-columns:1fr; }
-    .label{ text-align:left; margin-bottom:1rem; }
-    .contact{ padding-top:0; }
-    .skills{ grid-template-columns:1fr 1fr; row-gap:1.6rem; }
-    .name{ font-size:1.3rem; }
+  @media (max-width:820px){
+    .cols{ grid-template-columns:210px 1fr; gap:2.2rem; }
   }
-  @media (max-width:400px){ .skills{ grid-template-columns:1fr; } }
+  @media (max-width:680px){
+    .masthead{ flex-direction:column; }
+    .contact{ text-align:left; padding-top:0; }
+    .cols{ grid-template-columns:1fr; gap:0; }
+    .aside{ margin-bottom:2.6rem; order:2; }
+    .main{ order:1; }
+    .aside > section:last-child{ margin-bottom:0; }
+  }
 
   /* print / save as PDF */
   @media print{
-    :root{ --bg:#fff; --ink:#111; --muted:#7c7c7c; --rule:rgba(0,0,0,.15); }
+    :root{ --bg:#fff; --ink:#111; --muted:#777; --rule:rgba(0,0,0,.15); }
     .vignette{ display:none !important; }
-    body{ font-size:10.5pt; }
+    body{ font-size:10pt; }
     .page{ padding:1cm 1.2cm; max-width:100%; }
-    .row + .row{ margin-top:1.4rem; }
-    .entry, .row{ break-inside:avoid; }
-    .lnk .arrow{ display:none; }
+    .cols{ grid-template-columns:220px 1fr; gap:1.4cm; }
+    .job, .item, .grp, .about, section{ break-inside:avoid; }
     .lnk{ border-bottom:0; }
+    .lnk .arrow{ display:none; }
   }
-
-  @media (prefers-reduced-motion: reduce){
-    .lnk, .lnk .arrow{ transition:none; }
-  }
+  @media (prefers-reduced-motion: reduce){ .lnk, .lnk .arrow{ transition:none; } }
 </style>
 </head>
 <body>
@@ -124,130 +145,148 @@
 
   <div class="page">
 
-    <!-- NAME / CONTACT -->
-    <header class="row">
-      <div class="label name">Matheus Marcondes</div>
+    <!-- MASTHEAD -->
+    <header class="masthead">
+      <div class="brand">
+        <h1>Matheus<span class="ln">Marcondes</span></h1>
+        <p class="sub dim">Control &amp; Automation Engineering Student — HealthTech &amp; Medical-Device R&amp;D</p>
+      </div>
       <div class="contact">
+        <span>Belo Horizonte, Brazil</span>
+        <a class="lnk" href="mailto:matheus@marcondes.dev">matheus@marcondes.dev</a>
         <a class="lnk" href="https://www.linkedin.com/in/matheus-marcondes/" target="_blank" rel="noopener">linkedin.com/in/matheus-marcondes<span class="arrow" aria-hidden="true">↗</span></a>
         <a class="lnk" href="https://github.com/matheusmarcondes1" target="_blank" rel="noopener">github.com/matheusmarcondes1<span class="arrow" aria-hidden="true">↗</span></a>
-        <a href="mailto:matheusmarcondes@ufmg.br">matheusmarcondes@ufmg.br</a>
+        <a class="lnk" href="https://orcid.org/0009-0004-8475-1406" target="_blank" rel="noopener">orcid.org/0009-0004-8475-1406<span class="arrow" aria-hidden="true">↗</span></a>
         <a class="lnk" href="http://lattes.cnpq.br/9754941348911900" target="_blank" rel="noopener">lattes.cnpq.br<span class="arrow" aria-hidden="true">↗</span></a>
       </div>
     </header>
 
-    <!-- EXPERIENCE -->
-    <section class="row">
-      <div class="label">Experience</div>
-      <div>
-        <article class="entry">
-          <h3><a class="lnk org" href="https://www.instagram.com/neurodynamics.ufmg/" target="_blank" rel="noopener">NeuroDynamics<span class="arrow" aria-hidden="true">↗</span></a> <span class="role dim">Founder &amp; Project Manager</span></h3>
-          <p>Founded and structured a 40-person biomedical R&amp;D group on a corporate, agile model. Set up ISO 9001 documentation, KPIs and GitHub Projects; biweekly sprints replaced three-month delivery cycles across six active projects.</p>
-          <p class="meta dim">Feb 2025 – Present · UFMG, Brazil</p>
-        </article>
+    <!-- ABOUT ME -->
+    <section class="about">
+      <h2 class="sec-title">About me</h2>
+      <p>
+        I'm an undergraduate in Control and Automation Engineering at UFMG, and since 2019 I've kept
+        circling one question: how does a piece of technology actually reach the person who needs it?
+        That thread runs through the work I care about most — prosthetics and orthoses, neuromodulation,
+        functional electrical stimulation, and brain–computer interfaces — and it's taught me to value
+        verification, risk, and regulatory rigor as much as the idea itself. I started NeuroDynamics, a
+        student healthtech R&amp;D group now around 40 people, because I wanted engineering and healthcare
+        in the same room; lately I've been learning what operational excellence looks like up close as a
+        continuous-improvement intern at Abbott. I'm early in all of this, and I try to stay honest about
+        what I know and what I'm still figuring out — but I show up, I follow through, and I care more
+        about building something genuinely useful than something merely impressive.
+      </p>
+    </section>
 
-        <article class="entry">
-          <h3><a class="lnk org" href="https://www.labbioufmg.org/" target="_blank" rel="noopener">LABBIO — Bioengineering Lab<span class="arrow" aria-hidden="true">↗</span></a> <span class="role dim">Assistive Technology Researcher</span></h3>
-          <p>Built an embedded functional electrical stimulation (FES) system triggered by a brain–computer interface for spinal-cord-injury rehabilitation. EEG acquired via OpenBCI, validated in FES-Cycling with three paraplegic volunteers.</p>
-          <p class="meta dim">Jun 2024 – Oct 2025 · UFMG, Brazil</p>
-        </article>
+    <!-- TWO COLUMNS -->
+    <div class="cols">
 
-        <article class="entry">
-          <h3><a class="lnk org" href="https://www.linkedin.com/company/lebufmg" target="_blank" rel="noopener">LEB — Biomedical Engineering Lab<span class="arrow" aria-hidden="true">↗</span></a> <span class="role dim">Team Manager · Cybathlon 2024</span></h3>
-          <p>Led FES-Cycling R&amp;D for the international Cybathlon 2024 (ETH Zürich) across UFMG, UnB and INRIA's CAMIN team in France. Built fatigue-compensation control and secured the partnerships and funding for the team's participation.</p>
-          <p class="meta dim">Jun 2023 – Feb 2025 · UFMG, Brazil</p>
-        </article>
+      <!-- LEFT / ASIDE -->
+      <aside class="aside">
+        <section class="edu">
+          <h2 class="sec-title">Education</h2>
+          <div class="item">
+            <div class="d">B.Eng. in Control &amp; Automation Engineering</div>
+            <div class="m dim"><a class="lnk" href="https://ufmg.br/" target="_blank" rel="noopener">Federal University of Minas Gerais<span class="arrow" aria-hidden="true">↗</span></a><br />Expected 2028</div>
+          </div>
+          <div class="item">
+            <div class="d">Technical Diploma in Mechatronics</div>
+            <div class="m dim"><a class="lnk" href="https://www.cefetmg.br/" target="_blank" rel="noopener">CEFET-MG<span class="arrow" aria-hidden="true">↗</span></a> · 2022</div>
+          </div>
+        </section>
 
-        <article class="entry">
-          <h3><a class="lnk org" href="https://formulateslaufmg.com/" target="_blank" rel="noopener">Fórmula Tesla<span class="arrow" aria-hidden="true">↗</span></a> <span class="role dim">Traction System Engineer</span></h3>
-          <p>Developed an Electrochemical Impedance Spectroscopy method for lithium cells, improving State-of-Health estimation and cutting a full-day test to under an hour using the Kaizen A3 methodology.</p>
-          <p class="meta dim">Mar 2023 – Dec 2023 · UFMG, Brazil</p>
-        </article>
+        <section class="skills">
+          <h2 class="sec-title">Skills</h2>
+          <div class="grp">
+            <span class="k">Medical Device Development</span>
+            <span class="v dim">R&amp;D, design, verification &amp; validation, clinical research, regulatory processes</span>
+          </div>
+          <div class="grp">
+            <span class="k">Quality &amp; Regulatory</span>
+            <span class="v dim">ISO 13485, ISO 14971, IEC 62304, ISO 9001, ANVISA RDC 751/2022</span>
+          </div>
+          <div class="grp">
+            <span class="k">Operational Excellence</span>
+            <span class="v dim">Lean Six Sigma, Shingo Model, 4P assessment, daily &amp; tiered management</span>
+          </div>
+          <div class="grp">
+            <span class="k">Technical Domains</span>
+            <span class="v dim">Neuromodulation, FES, brain–computer interfaces, prosthetics &amp; orthoses, wearables</span>
+          </div>
+          <div class="grp">
+            <span class="k">Project &amp; Data</span>
+            <span class="v dim">Agile / GitHub Projects, KPI frameworks, Power BI, Excel, data analysis</span>
+          </div>
+        </section>
 
-        <article class="entry">
-          <h3><a class="lnk org" href="https://ufla.br/" target="_blank" rel="noopener">Federal University of Lavras<span class="arrow" aria-hidden="true">↗</span></a> <span class="role dim">Safety Systems Analyst</span></h3>
-          <p>Structured risk-management and FMEA reports to raise the reliability of the vehicle's embedded shutdown and high-voltage systems.</p>
-          <p class="meta dim">Oct 2022 – Mar 2023 · UFLA, Brazil</p>
-        </article>
+        <section class="mini">
+          <h2 class="sec-title">Languages</h2>
+          <div class="item"><div class="d">Portuguese <span class="dim">— native</span></div></div>
+          <div class="item"><div class="d">English <span class="dim">— professional (B2)</span></div></div>
+        </section>
 
-        <article class="entry">
-          <h3><a class="lnk org" href="https://www.cefetmg.br/" target="_blank" rel="noopener">CEFET-MG<span class="arrow" aria-hidden="true">↗</span></a> <span class="role dim">Biomechanics Researcher</span></h3>
-          <p>Undergraduate research on lower-limb prosthesis and orthosis biomechanics for para-athletes — anthropometric analysis and structural improvements for comfort and performance.</p>
-          <p class="meta dim">Mar 2021 – Sep 2022 · CEFET-MG, Brazil</p>
-        </article>
+        <section class="mini">
+          <h2 class="sec-title">Leadership &amp; Governance</h2>
+          <div class="item">
+            <div class="d">Member, Project Council</div>
+            <div class="m dim">UFMG School of Engineering · 2025 – Present</div>
+          </div>
+          <div class="item">
+            <div class="d">Member, Congregation</div>
+            <div class="m dim">UFMG School of Engineering · 2024 – 2025</div>
+          </div>
+          <p class="note dim">Contributed to institutional governance and academic development at UFMG's School of Engineering.</p>
+        </section>
+      </aside>
+
+      <!-- RIGHT / MAIN -->
+      <div class="main">
+        <section class="experience">
+          <h2 class="sec-title">Work Experience</h2>
+
+          <article class="job">
+            <h3>Founder &amp; Head</h3>
+            <p class="org dim"><a class="lnk" href="https://www.instagram.com/neurodynamics.ufmg/" target="_blank" rel="noopener">NeuroDynamics<span class="arrow" aria-hidden="true">↗</span></a> · UFMG School of Engineering · 2024 – Present</p>
+            <p>A multidisciplinary student healthtech R&amp;D initiative I founded and structured under a corporate-style model, with agile methods and a focus on user-centered, clinically applicable solutions.</p>
+            <ul>
+              <li>Built it from the ground up — statute, org chart, brand, and governance — creating a space where engineering, healthcare, and applied research work side by side on assistive health technologies.</li>
+              <li>Lead a team of ~40 across six active projects and five departments, working with external academic and clinical research groups (including ETH Zürich, InCor-USP, and IMREA-USP).</li>
+              <li>Set up ISO 9001-aligned documentation, KPIs, and an R&amp;D quality framework mapped to ISO 13485, ISO 14971, IEC 62304, and ANVISA RDC 751/2022 — DHF templates, a risk-management matrix, and test reports.</li>
+              <li>Introduced project tracking in GitHub Projects with bi-weekly sprints, cutting feature delivery from months to weeks.</li>
+              <li>Supported projects spanning brain–computer interfaces, FES, and wearables — including Órion (FES-cycling) and Arabella (AI-assisted diagnostics) — and coordinated our participation in Cybathlon 2024 (Switzerland).</li>
+            </ul>
+          </article>
+
+          <article class="job">
+            <h3>Undergraduate Researcher</h3>
+            <p class="org dim"><a class="lnk" href="https://www.labbioufmg.org/" target="_blank" rel="noopener">LEB &amp; LABBIO, UFMG<span class="arrow" aria-hidden="true">↗</span></a> · 2023 – Present</p>
+            <p>Contribute to applied research in biomedical and assistive technologies, supporting design, development, and experimental validation. Work has spanned functional electrical stimulation and brain–computer interfaces for motor rehabilitation, and the biomechanics of lower-limb prosthetics and orthoses.</p>
+          </article>
+
+          <article class="job">
+            <h3>Continuous Improvement Intern</h3>
+            <p class="org dim"><a class="lnk" href="https://www.abbott.com/" target="_blank" rel="noopener">Abbott<span class="arrow" aria-hidden="true">↗</span></a> · Structural Heart Division, Medical Devices · 2025 – Present</p>
+            <p>Support process optimization and operational excellence in a highly regulated medical-device manufacturing environment, applying lean methods and data analysis.</p>
+            <ul>
+              <li>Assessed core operational-excellence mechanisms — daily management, tiered meetings, 4P assessment, and the Shingo Model — to strengthen continuous-improvement maturity across the site.</li>
+              <li>Built software tools that replaced tens of thousands of reais in automation hardware, cutting motion and time waste on the floor and lowering particle-generation risk in cleanroom areas.</li>
+              <li>Created BI and performance tooling for data-informed decisions, including a Power BI Lean Six Sigma skills matrix and an Excel workload-control system for inspection teams.</li>
+            </ul>
+          </article>
+        </section>
+
+        <section class="courses">
+          <h2 class="sec-title">Courses &amp; Certifications</h2>
+          <ul>
+            <li>McKinsey Forward <span class="prov dim">— McKinsey &amp; Company</span></li>
+            <li>RTL Digital Design <span class="prov dim">— Cadence (CADEMICS, 2024)</span></li>
+            <li>Research Methodology <span class="prov dim">— University of São Paulo (USP)</span></li>
+            <li>English B2 (CEFR) <span class="prov dim">— Cambridge Assessment</span></li>
+          </ul>
+        </section>
       </div>
-    </section>
 
-    <!-- SKILLS -->
-    <section class="row">
-      <div class="label">Skills</div>
-      <div class="skills">
-        <div class="col">
-          <h4 class="dim">Engineering</h4>
-          <ul>
-            <li>Embedded systems</li>
-            <li>Signal processing</li>
-            <li>BCI &amp; EEG</li>
-            <li>FES</li>
-          </ul>
-        </div>
-        <div class="col">
-          <h4 class="dim">Software</h4>
-          <ul>
-            <li>MATLAB</li>
-            <li>Altium</li>
-            <li>AutoCAD</li>
-            <li>Figma</li>
-          </ul>
-        </div>
-        <div class="col">
-          <h4 class="dim">Standards</h4>
-          <ul>
-            <li>ISO 9001</li>
-            <li>ISO 14971</li>
-            <li>IEC 60601</li>
-            <li>Lean</li>
-          </ul>
-        </div>
-        <div class="col">
-          <h4 class="dim">Management</h4>
-          <ul>
-            <li>Project management</li>
-            <li>Agile &amp; Scrum</li>
-            <li>KPIs</li>
-            <li>GitHub Projects</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- EDUCATION -->
-    <section class="row">
-      <div class="label">Education</div>
-      <div>
-        <article class="entry">
-          <h3><a class="lnk org" href="https://ufmg.br/" target="_blank" rel="noopener">Federal University of Minas Gerais<span class="arrow" aria-hidden="true">↗</span></a> <span class="role dim">Expected 2028</span></h3>
-          <p class="sub">BS in Control &amp; Automation Engineering<br />Emphasis in Biomedical Engineering</p>
-          <p class="also dim">Also: RTL Digital Design — Cadence (CADEMICS 2024) · Research Methodology — USP · English B2 — Cambridge</p>
-        </article>
-
-        <article class="entry">
-          <h3><a class="lnk org" href="https://www.cefetmg.br/" target="_blank" rel="noopener">CEFET-MG<span class="arrow" aria-hidden="true">↗</span></a> <span class="role dim">Class of 2022</span></h3>
-          <p class="sub">Technical Degree in Mechatronics</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- HONORS -->
-    <section class="row">
-      <div class="label">Honors</div>
-      <ul class="honors">
-        <li>Full member, Mechatronics Course Board — CEFET-MG</li>
-        <li>Delegate “Team Manager”, PowerTrike Project — School of Engineering, UFMG</li>
-        <li>Full member, Congregation — School of Engineering, UFMG</li>
-        <li>Full member, Projects Council — School of Engineering, UFMG</li>
-      </ul>
-    </section>
-
+    </div>
   </div>
 
   <script>
@@ -255,19 +294,14 @@
     "use strict";
     var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     var coarse = window.matchMedia("(pointer: coarse)").matches;
-    if(reduce || coarse) return; /* keep it perfectly still where subtlety isn't wanted */
+    if(reduce || coarse) return;   /* stay perfectly still where subtlety isn't wanted */
 
     var root = document.documentElement;
     var vignette = document.querySelector(".vignette");
+    function readRGB(n){ return getComputedStyle(root).getPropertyValue(n).trim().split(",").map(Number); }
+    var INK = readRGB("--ink-rgb"), MUT = readRGB("--muted-rgb");
 
-    /* ---- palette for interpolation ---- */
-    function readRGB(name){
-      return getComputedStyle(root).getPropertyValue(name).trim().split(",").map(Number);
-    }
-    var INK = readRGB("--ink-rgb");
-    var MUT = readRGB("--muted-rgb");
-
-    /* ---- cursor-reactive focus on the gray elements ---- */
+    /* cursor-reactive focus: gray secondary text gently comes into focus near the cursor */
     var items = [].slice.call(document.querySelectorAll(".dim")).map(function(el){
       return { el:el, cx:0, cy:0, f:0 };
     });
@@ -280,65 +314,39 @@
     }
     measure();
 
-    var mx = -9999, my = -9999, active = false, raf = null;
-    var R = 165, R2 = R*R;
-
+    var mx=-9999, my=-9999, active=false, raf=null;
+    var R=165, R2=R*R;
     function tick(){
       var busy = active;
       for(var i=0;i<items.length;i++){
         var it = items[i];
-        var dx = mx - it.cx, dy = my - it.cy, d2 = dx*dx + dy*dy;
-        var t = 0;
-        if(active && d2 < R2){
-          var d = Math.sqrt(d2);
-          t = Math.pow(1 - d/R, 1.7);   /* quadratic-ish falloff */
-        }
-        it.f += (t - it.f) * 0.16;       /* ease */
+        var dx = mx-it.cx, dy = my-it.cy, d2 = dx*dx+dy*dy, t=0;
+        if(active && d2 < R2){ t = Math.pow(1 - Math.sqrt(d2)/R, 1.7); }
+        it.f += (t - it.f) * 0.16;
         if(it.f > 0.004){
           busy = true;
-          var f = it.f * 0.72;           /* cap: eases to a soft mid-gray, never full ink */
-          var r = Math.round(MUT[0] + (INK[0]-MUT[0])*f);
-          var g = Math.round(MUT[1] + (INK[1]-MUT[1])*f);
-          var b = Math.round(MUT[2] + (INK[2]-MUT[2])*f);
+          var f = it.f * 0.72;   /* eases to a soft mid-gray, never full ink */
+          var r = Math.round(MUT[0]+(INK[0]-MUT[0])*f);
+          var g = Math.round(MUT[1]+(INK[1]-MUT[1])*f);
+          var b = Math.round(MUT[2]+(INK[2]-MUT[2])*f);
           it.el.style.color = "rgb("+r+","+g+","+b+")";
-        } else if(it.el.style.color){
-          it.el.style.color = "";        /* back to --muted */
-          it.f = 0;
-        }
+        } else if(it.el.style.color){ it.el.style.color=""; it.f=0; }
       }
-      if(busy){ raf = requestAnimationFrame(tick); }
-      else { raf = null; }
+      raf = busy ? requestAnimationFrame(tick) : null;
     }
     function ensure(){ if(!raf) raf = requestAnimationFrame(tick); }
 
     window.addEventListener("pointermove", function(e){
-      mx = e.clientX; my = e.clientY; active = true;
-      vignette.style.setProperty("--mx", mx + "px");
-      vignette.style.setProperty("--my", my + "px");
+      mx=e.clientX; my=e.clientY; active=true;
+      vignette.style.setProperty("--mx", mx+"px");
+      vignette.style.setProperty("--my", my+"px");
       ensure();
     }, { passive:true });
-
-    window.addEventListener("pointerleave", function(){ active = false; ensure(); });
-    window.addEventListener("blur", function(){ active = false; ensure(); });
-
+    window.addEventListener("pointerleave", function(){ active=false; ensure(); });
+    window.addEventListener("blur", function(){ active=false; ensure(); });
     var rz;
-    window.addEventListener("resize", function(){ clearTimeout(rz); rz = setTimeout(measure, 150); });
-    window.addEventListener("scroll", function(){ measure(); }, { passive:true });
-
-    /* ---- barely-there magnetic pull on linked org names ---- */
-    document.querySelectorAll(".lnk").forEach(function(el){
-      el.addEventListener("pointermove", function(e){
-        var r = el.getBoundingClientRect();
-        var ox = e.clientX - (r.left + r.width/2);
-        var oy = e.clientY - (r.top + r.height/2);
-        el.style.transform = "translate(" + (ox*0.06).toFixed(2) + "px," + (oy*0.12).toFixed(2) + "px)";
-      });
-      el.addEventListener("pointerleave", function(){
-        el.style.transition = "transform .34s cubic-bezier(.34,1.56,.64,1)";
-        el.style.transform = "translate(0,0)";
-        setTimeout(function(){ el.style.transition = ""; }, 340);
-      });
-    });
+    window.addEventListener("resize", function(){ clearTimeout(rz); rz=setTimeout(measure,150); });
+    window.addEventListener("scroll", measure, { passive:true });
   })();
   </script>
 </body>
