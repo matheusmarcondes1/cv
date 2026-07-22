@@ -10,12 +10,14 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='4' fill='%231b1a18'/%3E%3C/svg%3E" />
 <style>
   :root{
-    --bg:#f3f2ef;          /* refined off-white, faint warm bias */
-    --ink:#1b1a18;         /* near-black */
-    --muted:#b3b0aa;       /* light warm gray — secondary text */
+    --bg:#f3f2ef;
+    --ink:#1b1a18;
+    --muted:#b3b0aa;
     --rule:rgba(27,26,24,.11);
     --ink-rgb:27,26,24;
     --muted-rgb:179,176,170;
+    --axis:260px;
+    --gap:clamp(1.75rem,4.5vw,3rem);
     color-scheme: light;
   }
   *{ box-sizing:border-box; }
@@ -39,12 +41,44 @@
       rgba(0,0,0,0) 0%, rgba(24,22,19,.022) 78%);
   }
 
+  /* ---------- links menu (top-right) ---------- */
+  .linkmenu{ position:fixed; top:1.1rem; right:1.1rem; z-index:20; }
+  .linkmenu-btn{
+    display:flex; align-items:center; justify-content:center; width:2.5rem; height:2.5rem;
+    border-radius:999px; border:1px solid var(--rule); color:var(--ink); cursor:pointer;
+    background:color-mix(in srgb, var(--bg) 80%, transparent);
+    -webkit-backdrop-filter:blur(7px); backdrop-filter:blur(7px);
+    transition:border-color .2s ease, background .2s ease;
+  }
+  .linkmenu-btn:hover{ border-color:var(--muted); }
+  .linkmenu-btn:focus-visible{ outline:2px solid var(--ink); outline-offset:2px; }
+  .linkmenu-btn svg{ width:1.05rem; height:1.05rem; display:block; }
+  .linkmenu-pop{
+    position:absolute; top:calc(100% + .5rem); right:0; min-width:172px;
+    display:flex; flex-direction:column; padding:.4rem;
+    background:var(--bg); border:1px solid var(--rule); border-radius:11px;
+    box-shadow:0 10px 34px rgba(0,0,0,.11);
+    opacity:0; transform:translateY(-6px) scale(.98); transform-origin:top right;
+    visibility:hidden; pointer-events:none;
+    transition:opacity .16s ease, transform .16s ease, visibility 0s linear .16s;
+  }
+  .linkmenu[data-open="true"] .linkmenu-pop{
+    opacity:1; transform:none; visibility:visible; pointer-events:auto;
+    transition:opacity .16s ease, transform .16s ease;
+  }
+  .linkmenu-pop a{
+    display:flex; align-items:center; justify-content:space-between; gap:1.4rem;
+    font-size:.9rem; color:var(--ink); text-decoration:none; padding:.46rem .55rem; border-radius:7px;
+  }
+  .linkmenu-pop a:hover{ background:color-mix(in srgb, var(--ink) 6%, transparent); }
+  .linkmenu-pop a:focus-visible{ outline:2px solid var(--ink); outline-offset:-2px; }
+  .linkmenu-pop a .arrow{ color:var(--muted); font-size:.8em; }
+
   .page{ position:relative; z-index:1; max-width:1020px; margin:0 auto;
-    padding:clamp(3.5rem,10vh,6.5rem) clamp(1.5rem,6vw,3.5rem) 6rem; }
+    padding:clamp(3.5rem,10vh,6rem) clamp(1.5rem,6vw,3.5rem) 6rem; }
 
   /* shared axis: left column right-aligned, right column left-aligned */
-  .grid{ display:grid; grid-template-columns:230px 1fr; column-gap:clamp(1.75rem,4.5vw,3rem);
-    align-items:start; }
+  .grid{ display:grid; grid-template-columns:var(--axis) 1fr; column-gap:var(--gap); align-items:start; }
   .side{ text-align:right; }
 
   .masthead{ padding-bottom:1.9rem; border-bottom:1px solid var(--rule); }
@@ -54,35 +88,38 @@
   /* name / contact */
   h1.name{ margin:0; font-size:clamp(1.4rem,3vw,1.72rem); font-weight:500; letter-spacing:-.012em;
     line-height:1.12; }
-  .subtitle{ margin:.6rem 0 0; font-size:.78rem; color:var(--muted); line-height:1.45; }
-  .contact{ display:flex; flex-direction:column; gap:.32rem; font-size:.9rem; padding-top:.35rem; }
+  .subtitle{ margin:.6rem 0 0; font-size:.78rem; color:var(--muted); line-height:1.5; text-wrap:balance; }
+  .contact{ display:flex; flex-direction:column; gap:.34rem; font-size:.9rem; padding-top:.35rem; }
+  .contact a{ color:var(--ink); text-decoration:none; }
+  .contact a:hover{ text-decoration:underline; text-underline-offset:2px; text-decoration-color:var(--muted); }
 
-  /* section label (v2 look) */
-  .h{ margin:0 0 1rem; font-size:1.1rem; font-weight:500; color:var(--ink); letter-spacing:-.006em;
-    line-height:1.25; }
+  /* section label */
+  .h{ margin:0; font-size:1.1rem; font-weight:500; color:var(--ink); letter-spacing:-.006em; line-height:1.25; }
 
-  .about-p{ margin:0; max-width:64ch; font-size:1rem; line-height:1.62; }
+  /* about (full width) */
+  .about-p{ grid-column:1 / -1; margin:.9rem 0 0; font-size:1rem; line-height:1.62; text-wrap:pretty; }
 
   /* blocks spacing */
   .aside .blk + .blk{ margin-top:2rem; }
   .main .blk + .blk{ margin-top:2.5rem; }
+  .blk > .h{ margin-bottom:1rem; }
 
-  /* education / mini lists (aside, right-aligned) */
+  /* aside items (right-aligned, tidy wraps) */
   .item + .item{ margin-top:1.05rem; }
-  .item .d{ font-size:.9rem; font-weight:600; line-height:1.3; }
+  .item .d{ font-size:.9rem; font-weight:600; line-height:1.32; text-wrap:balance; }
+  .item .d.reg{ font-weight:500; }
   .item .s{ margin-top:.12rem; font-size:.85rem; }
   .item .s .lnk{ color:var(--ink); }
   .item .m{ margin-top:.1rem; font-size:.8rem; color:var(--muted); line-height:1.4; }
-  .item .d.reg{ font-weight:500; }
 
-  /* skills (aside) */
+  /* skills */
   .sk + .sk{ margin-top:.95rem; }
   .sk .cat{ font-size:.79rem; color:var(--muted); }
-  .sk .val{ margin-top:.1rem; font-size:.85rem; line-height:1.45; }
+  .sk .val{ margin-top:.1rem; font-size:.85rem; line-height:1.5; text-wrap:balance; }
 
-  .note{ margin-top:.75rem; font-size:.79rem; color:var(--muted); line-height:1.5; }
+  .note{ margin-top:.7rem; font-size:.79rem; color:var(--muted); line-height:1.45; text-wrap:balance; }
 
-  /* experience (main) */
+  /* experience */
   .job + .job{ margin-top:1.8rem; }
   .job h3{ margin:0; font-size:1.05rem; font-weight:400; letter-spacing:-.006em; line-height:1.35; }
   .job h3 .org{ font-weight:700; color:var(--ink); }
@@ -93,7 +130,7 @@
   .job li{ position:relative; padding-left:1.05rem; font-size:.92rem; line-height:1.5; margin-bottom:.4rem; }
   .job li::before{ content:""; position:absolute; left:0; top:.62em; width:.42rem; height:1px; background:var(--muted); }
 
-  /* courses (main) */
+  /* courses */
   .courses{ margin:0; padding:0; list-style:none; }
   .courses li{ font-size:.92rem; line-height:1.45; margin-bottom:.5rem; }
   .courses li:last-child{ margin-bottom:0; }
@@ -110,12 +147,14 @@
   .dim{ color:var(--muted); }
 
   /* responsive */
-  @media (max-width:820px){ .grid{ grid-template-columns:200px 1fr; } }
+  @media (max-width:820px){ :root{ --axis:210px; } }
   @media (max-width:680px){
-    .grid{ grid-template-columns:1fr; row-gap:1.2rem; }
+    :root{ --gap:0; }
+    .grid{ grid-template-columns:1fr; row-gap:1.15rem; }
     .side{ text-align:left; }
     .contact{ padding-top:0; }
-    .body{ row-gap:0; }
+    .about-p{ margin-top:.2rem; }
+    .body{ padding-top:2rem; }
     .body .main{ order:1; }
     .body .aside{ order:2; margin-top:2.6rem; }
   }
@@ -123,18 +162,34 @@
   /* print / save as PDF */
   @media print{
     :root{ --bg:#fff; --ink:#111; --muted:#777; --rule:rgba(0,0,0,.15); }
-    .vignette{ display:none !important; }
+    .vignette, .linkmenu{ display:none !important; }
     body{ font-size:10pt; }
     .page{ padding:1cm 1.2cm; max-width:100%; }
     .grid{ grid-template-columns:210px 1fr; column-gap:1.2cm; }
     .job, .item, .blk, .about, .masthead{ break-inside:avoid; }
     .lnk{ border-bottom:0; } .lnk .arrow{ display:none; }
   }
-  @media (prefers-reduced-motion: reduce){ .lnk, .lnk .arrow{ transition:none; } }
+  @media (prefers-reduced-motion: reduce){ .lnk, .lnk .arrow, .linkmenu-pop{ transition:none; } }
 </style>
 </head>
 <body>
   <div class="vignette" aria-hidden="true"></div>
+
+  <!-- LINKS MENU -->
+  <div class="linkmenu" id="linkmenu" data-open="false">
+    <button class="linkmenu-btn" id="linkBtn" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="linkPop" aria-label="Open links">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+      </svg>
+    </button>
+    <div class="linkmenu-pop" id="linkPop" role="menu" aria-label="Links">
+      <a role="menuitem" href="https://www.linkedin.com/in/matheus-marcondes/" target="_blank" rel="noopener">LinkedIn <span class="arrow" aria-hidden="true">↗</span></a>
+      <a role="menuitem" href="https://github.com/matheusmarcondes1" target="_blank" rel="noopener">GitHub <span class="arrow" aria-hidden="true">↗</span></a>
+      <a role="menuitem" href="https://orcid.org/0009-0004-8475-1406" target="_blank" rel="noopener">ORCID <span class="arrow" aria-hidden="true">↗</span></a>
+      <a role="menuitem" href="http://lattes.cnpq.br/9754941348911900" target="_blank" rel="noopener">Lattes <span class="arrow" aria-hidden="true">↗</span></a>
+    </div>
+  </div>
 
   <div class="page">
 
@@ -142,35 +197,29 @@
     <header class="grid masthead">
       <div class="side">
         <h1 class="name">Matheus Marcondes</h1>
-        <p class="subtitle dim">Control &amp; Automation Engineering student<br />HealthTech &amp; medical-device R&amp;D</p>
+        <p class="subtitle dim">Control &amp; Automation Engineering<br />student · HealthTech &amp; med-device R&amp;D</p>
       </div>
       <div class="contact">
-        <a class="lnk" href="mailto:matheus@marcondes.dev">matheus@marcondes.dev</a>
-        <a class="lnk" href="https://www.linkedin.com/in/matheus-marcondes/" target="_blank" rel="noopener">linkedin.com/in/matheus-marcondes<span class="arrow" aria-hidden="true">↗</span></a>
-        <a class="lnk" href="https://github.com/matheusmarcondes1" target="_blank" rel="noopener">github.com/matheusmarcondes1<span class="arrow" aria-hidden="true">↗</span></a>
-        <a class="lnk" href="https://orcid.org/0009-0004-8475-1406" target="_blank" rel="noopener">orcid.org/0009-0004-8475-1406<span class="arrow" aria-hidden="true">↗</span></a>
-        <a class="lnk" href="http://lattes.cnpq.br/9754941348911900" target="_blank" rel="noopener">lattes.cnpq.br<span class="arrow" aria-hidden="true">↗</span></a>
-        <span class="dim">Belo Horizonte, Brazil</span>
+        <a href="mailto:matheus@marcondes.dev">matheus@marcondes.dev</a>
+        <a href="tel:+5531984950000">+55 (31) 98495-0000</a>
       </div>
     </header>
 
-    <!-- ABOUT -->
+    <!-- ABOUT (full width) -->
     <section class="grid about">
       <div class="side"><h2 class="h">About</h2></div>
-      <div>
-        <p class="about-p">
-          I'm an undergraduate in Control and Automation Engineering at UFMG, and since 2019 I've kept
-          circling one question: how does a piece of technology actually reach the person who needs it?
-          That thread runs through the work I care about most — prosthetics and orthoses, neuromodulation,
-          functional electrical stimulation, and brain–computer interfaces — and it's taught me to value
-          verification, risk, and regulatory rigor as much as the idea itself. I started NeuroDynamics, a
-          student healthtech R&amp;D group now around 40 people, because I wanted engineering and healthcare
-          in the same room; lately I've been learning what operational excellence looks like up close as a
-          continuous-improvement intern at Abbott. I'm early in all of this, and I try to stay honest about
-          what I know and what I'm still figuring out — but I show up, I follow through, and I care more
-          about building something genuinely useful than something merely impressive.
-        </p>
-      </div>
+      <p class="about-p">
+        I'm an undergraduate in Control and Automation Engineering at UFMG, and since 2019 I've kept
+        circling one question: how does a piece of technology actually reach the person who needs it?
+        That thread runs through the work I care about most — prosthetics and orthoses, neuromodulation,
+        functional electrical stimulation, and brain–computer interfaces — and it's taught me to value
+        verification, risk, and regulatory rigor as much as the idea itself. I started NeuroDynamics, a
+        student healthtech R&amp;D group now around 40 people, because I wanted engineering and healthcare
+        in the same room; lately I've been learning what operational excellence looks like up close as a
+        continuous-improvement intern at Abbott. I'm early in all of this, and I try to stay honest about
+        what I know and what I'm still figuring out — but I show up, I follow through, and I care more
+        about building something genuinely useful than something merely impressive.
+      </p>
     </section>
 
     <!-- BODY: two columns -->
@@ -181,7 +230,7 @@
         <div class="blk">
           <h2 class="h">Education</h2>
           <div class="item">
-            <div class="d">B.Eng. in Control &amp; Automation Engineering</div>
+            <div class="d">B.Eng. Control &amp; Automation Engineering</div>
             <div class="s"><a class="lnk" href="https://ufmg.br/" target="_blank" rel="noopener">Federal University of Minas Gerais<span class="arrow" aria-hidden="true">↗</span></a></div>
             <div class="m dim">Expected 2028</div>
           </div>
@@ -194,11 +243,11 @@
 
         <div class="blk">
           <h2 class="h">Skills</h2>
-          <div class="sk"><div class="cat dim">Medical Device Development</div><div class="val">R&amp;D, design, verification &amp; validation, clinical research, regulatory processes</div></div>
+          <div class="sk"><div class="cat dim">Medical Device Development</div><div class="val">R&amp;D, design, verification &amp; validation, clinical research, regulatory</div></div>
           <div class="sk"><div class="cat dim">Quality &amp; Regulatory</div><div class="val">ISO 13485, ISO 14971, IEC 62304, ISO 9001, ANVISA RDC 751/2022</div></div>
           <div class="sk"><div class="cat dim">Operational Excellence</div><div class="val">Lean Six Sigma, Shingo Model, 4P assessment, daily &amp; tiered management</div></div>
           <div class="sk"><div class="cat dim">Technical Domains</div><div class="val">Neuromodulation, FES, brain–computer interfaces, prosthetics &amp; orthoses, wearables</div></div>
-          <div class="sk"><div class="cat dim">Project &amp; Data</div><div class="val">Agile / GitHub Projects, KPI frameworks, Power BI, Excel, data analysis</div></div>
+          <div class="sk"><div class="cat dim">Project &amp; Data</div><div class="val">Agile / GitHub Projects, KPIs, Power BI, Excel, data analysis</div></div>
         </div>
 
         <div class="blk">
@@ -211,13 +260,13 @@
           <h2 class="h">Leadership &amp; Governance</h2>
           <div class="item">
             <div class="d reg">Member, Project Council</div>
-            <div class="m dim">UFMG School of Engineering · 2025 – Present</div>
+            <div class="m dim">2025 – Present</div>
           </div>
           <div class="item">
             <div class="d reg">Member, Congregation</div>
-            <div class="m dim">UFMG School of Engineering · 2024 – 2025</div>
+            <div class="m dim">2024 – 2025</div>
           </div>
-          <p class="note dim">Contributed to institutional governance and academic development at UFMG's School of Engineering.</p>
+          <p class="note dim">UFMG School of Engineering</p>
         </div>
       </aside>
 
@@ -240,12 +289,6 @@
           </article>
 
           <article class="job">
-            <h3><a class="lnk org" href="https://www.labbioufmg.org/" target="_blank" rel="noopener">LEB &amp; LABBIO<span class="arrow" aria-hidden="true">↗</span></a> <span class="role dim">Undergraduate Researcher</span></h3>
-            <p class="meta dim">UFMG · 2023 – Present</p>
-            <p>Contribute to applied research in biomedical and assistive technologies, supporting design, development, and experimental validation. Work has spanned functional electrical stimulation and brain–computer interfaces for motor rehabilitation, and the biomechanics of lower-limb prosthetics and orthoses.</p>
-          </article>
-
-          <article class="job">
             <h3><a class="lnk org" href="https://www.abbott.com/" target="_blank" rel="noopener">Abbott<span class="arrow" aria-hidden="true">↗</span></a> <span class="role dim">Continuous Improvement Intern</span></h3>
             <p class="meta dim">Structural Heart Division, Medical Devices · 2025 – Present</p>
             <p>Support process optimization and operational excellence in a highly regulated medical-device manufacturing environment, applying lean methods and data analysis.</p>
@@ -254,6 +297,12 @@
               <li>Built software tools that replaced tens of thousands of reais in automation hardware, cutting motion and time waste on the floor and lowering particle-generation risk in cleanroom areas.</li>
               <li>Created BI and performance tooling for data-informed decisions, including a Power BI Lean Six Sigma skills matrix and an Excel workload-control system for inspection teams.</li>
             </ul>
+          </article>
+
+          <article class="job">
+            <h3><a class="lnk org" href="https://www.labbioufmg.org/" target="_blank" rel="noopener">LEB &amp; LABBIO<span class="arrow" aria-hidden="true">↗</span></a> <span class="role dim">Undergraduate Researcher</span></h3>
+            <p class="meta dim">UFMG · 2023 – Present</p>
+            <p>Contribute to applied research in biomedical and assistive technologies, supporting design, development, and experimental validation. Work has spanned functional electrical stimulation and brain–computer interfaces for motor rehabilitation, and the biomechanics of lower-limb prosthetics and orthoses.</p>
           </article>
         </div>
 
@@ -272,26 +321,45 @@
   </div>
 
   <script>
+  /* ---- links dropdown (always active) ---- */
+  (function(){
+    "use strict";
+    var lm = document.getElementById("linkmenu");
+    var btn = document.getElementById("linkBtn");
+    if(!lm || !btn) return;
+    function setOpen(o){
+      lm.dataset.open = o ? "true" : "false";
+      btn.setAttribute("aria-expanded", o ? "true" : "false");
+    }
+    btn.addEventListener("click", function(e){
+      e.stopPropagation();
+      setOpen(lm.dataset.open !== "true");
+    });
+    document.addEventListener("click", function(e){ if(!lm.contains(e.target)) setOpen(false); });
+    document.addEventListener("keydown", function(e){
+      if(e.key === "Escape" && lm.dataset.open === "true"){ setOpen(false); btn.focus(); }
+    });
+  })();
+
+  /* ---- cursor-reactive focus (subtle; off for reduced-motion / touch) ---- */
   (function(){
     "use strict";
     var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     var coarse = window.matchMedia("(pointer: coarse)").matches;
-    if(reduce || coarse) return;   /* stay perfectly still where subtlety isn't wanted */
+    if(reduce || coarse) return;
 
     var root = document.documentElement;
     var vignette = document.querySelector(".vignette");
     function readRGB(n){ return getComputedStyle(root).getPropertyValue(n).trim().split(",").map(Number); }
     var INK = readRGB("--ink-rgb"), MUT = readRGB("--muted-rgb");
 
-    /* cursor-reactive focus: gray secondary text gently comes into focus near the cursor */
     var items = [].slice.call(document.querySelectorAll(".dim")).map(function(el){
       return { el:el, cx:0, cy:0, f:0 };
     });
     function measure(){
       for(var i=0;i<items.length;i++){
         var r = items[i].el.getBoundingClientRect();
-        items[i].cx = r.left + r.width/2;
-        items[i].cy = r.top + r.height/2;
+        items[i].cx = r.left + r.width/2; items[i].cy = r.top + r.height/2;
       }
     }
     measure();
@@ -307,7 +375,7 @@
         it.f += (t - it.f) * 0.16;
         if(it.f > 0.004){
           busy = true;
-          var f = it.f * 0.72;   /* eases to a soft mid-gray, never full ink */
+          var f = it.f * 0.72;
           var r = Math.round(MUT[0]+(INK[0]-MUT[0])*f);
           var g = Math.round(MUT[1]+(INK[1]-MUT[1])*f);
           var b = Math.round(MUT[2]+(INK[2]-MUT[2])*f);
