@@ -7,7 +7,7 @@
 <meta name="description" content="Matheus Marcondes — Control & Automation Engineering student at UFMG, working in HealthTech and medical-device R&D. Founder of NeuroDynamics; Continuous Improvement Intern at Abbott." />
 <meta name="author" content="Matheus Marcondes" />
 <meta name="theme-color" content="#f3f2ef" />
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='4' fill='%231b1a18'/%3E%3C/svg%3E" />
+<link rel="icon" id="favicon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='6' fill='%2322c55e'/%3E%3C/svg%3E" />
 <style>
   :root{
     --bg:#f3f2ef;
@@ -321,6 +321,39 @@
   </div>
 
   <script>
+  /* ---- animated favicon: a pulsing green dot ---- */
+  (function(){
+    var link = document.getElementById("favicon");
+    if(!link) return;
+    var cv = document.createElement("canvas");
+    if(!cv.getContext) return;
+    cv.width = cv.height = 64;
+    var g = cv.getContext("2d");
+    var GREEN = "34,197,94";  /* #22c55e */
+    function draw(phase){
+      g.clearRect(0,0,64,64);
+      var cx=32, cy=32, env=Math.sin(phase*Math.PI);   /* 0 → 1 → 0 */
+      /* expanding, fading halo */
+      var haloR = 11 + phase*20;
+      var grd = g.createRadialGradient(cx,cy,Math.max(0.1,haloR*0.35),cx,cy,haloR);
+      grd.addColorStop(0,"rgba("+GREEN+","+(0.55*env).toFixed(3)+")");
+      grd.addColorStop(1,"rgba("+GREEN+",0)");
+      g.fillStyle=grd; g.beginPath(); g.arc(cx,cy,haloR,0,6.2832); g.fill();
+      /* core dot, gently breathing with a soft glow */
+      var coreR = 8.5 + env*1.6;
+      g.shadowColor="rgba("+GREEN+",0.95)"; g.shadowBlur=5+env*4;
+      g.fillStyle="rgb("+GREEN+")";
+      g.beginPath(); g.arc(cx,cy,coreR,0,6.2832); g.fill();
+      g.shadowBlur=0;
+      g.fillStyle="rgba(255,255,255,0.4)";
+      g.beginPath(); g.arc(cx-2.4,cy-2.6,coreR*0.32,0,6.2832); g.fill();
+      try{ link.href = cv.toDataURL("image/png"); }catch(e){}
+    }
+    if(window.matchMedia("(prefers-reduced-motion: reduce)").matches){ draw(0.0001); return; }
+    var start = performance.now(), period = 1500;
+    setInterval(function(){ draw((((performance.now()-start) % period) / period)); }, 66);
+  })();
+
   /* ---- links dropdown (always active) ---- */
   (function(){
     "use strict";
