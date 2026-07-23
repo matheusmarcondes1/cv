@@ -332,26 +332,15 @@
     var GREEN = "34,197,94";  /* #22c55e */
     function draw(phase){
       g.clearRect(0,0,64,64);
-      var cx=32, cy=32, env=Math.sin(phase*Math.PI);   /* 0 → 1 → 0 */
-      /* expanding, fading halo */
-      var haloR = 11 + phase*20;
-      var grd = g.createRadialGradient(cx,cy,Math.max(0.1,haloR*0.35),cx,cy,haloR);
-      grd.addColorStop(0,"rgba("+GREEN+","+(0.55*env).toFixed(3)+")");
-      grd.addColorStop(1,"rgba("+GREEN+",0)");
-      g.fillStyle=grd; g.beginPath(); g.arc(cx,cy,haloR,0,6.2832); g.fill();
-      /* core dot, gently breathing with a soft glow */
-      var coreR = 8.5 + env*1.6;
-      g.shadowColor="rgba("+GREEN+",0.95)"; g.shadowBlur=5+env*4;
-      g.fillStyle="rgb("+GREEN+")";
-      g.beginPath(); g.arc(cx,cy,coreR,0,6.2832); g.fill();
-      g.shadowBlur=0;
-      g.fillStyle="rgba(255,255,255,0.4)";
-      g.beginPath(); g.arc(cx-2.4,cy-2.6,coreR*0.32,0,6.2832); g.fill();
+      var env = Math.sin(phase*Math.PI);    /* 0 → 1 → 0 */
+      var r = 8 + env*7;                     /* flat 2D dot, pulsing in size */
+      g.fillStyle = "rgb("+GREEN+")";
+      g.beginPath(); g.arc(32,32,r,0,6.2832); g.fill();
       try{ link.href = cv.toDataURL("image/png"); }catch(e){}
     }
-    if(window.matchMedia("(prefers-reduced-motion: reduce)").matches){ draw(0.0001); return; }
-    var start = performance.now(), period = 1500;
-    setInterval(function(){ draw((((performance.now()-start) % period) / period)); }, 66);
+    if(window.matchMedia("(prefers-reduced-motion: reduce)").matches){ draw(0.1667); return; }
+    var start = performance.now(), period = 700;
+    setInterval(function(){ draw((((performance.now()-start) % period) / period)); }, 50);
   })();
 
   /* ---- links dropdown (always active) ---- */
