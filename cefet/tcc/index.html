@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Prosthetic feet, measured — CEFET-MG — Matheus Marcondes</title>
+<meta name="description" content="How much does the design of a prosthetic foot change the way someone walks? A biomechanics review with a MATLAB gait model." />
+<meta name="author" content="Matheus Marcondes" />
+<meta name="theme-color" content="#f3f2ef" />
+<meta property="og:title" content="Prosthetic feet, measured — CEFET-MG — Matheus Marcondes" />
+<meta property="og:description" content="How much does the design of a prosthetic foot change the way someone walks? A biomechanics review with a MATLAB gait model." />
+<meta property="og:url" content="https://marcondes.dev/cefet/tcc/" />
+<link rel="canonical" href="https://marcondes.dev/cefet/tcc/" />
+<link rel="alternate" type="text/markdown" title="Résumé (Markdown, English)" href="../../cv/en.md" />
+<link rel="alternate" type="text/markdown" title="Currículo (Markdown, português)" href="../../cv/pt.md" />
+<link rel="icon" id="favicon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='6' fill='%2322c55e'/%3E%3C/svg%3E" />
+<link rel="stylesheet" href="../../assets/site.css" />
+<script>(function(){var r=document.documentElement,l=null;try{l=new URLSearchParams(location.search).get("lang")||localStorage.getItem("lang")}catch(e){}if(l!=="en"&&l!=="pt")l=(navigator.language||"").toLowerCase().indexOf("pt")===0?"pt":"en";r.setAttribute("data-lang",l);r.lang=l==="pt"?"pt-BR":"en";})();</script>
+<script id="i18n-title" type="application/json">{"en":"Prosthetic feet, measured — CEFET-MG — Matheus Marcondes","pt":"Pés protéticos, medidos — CEFET-MG — Matheus Marcondes"}</script>
+<script src="../../assets/ascii.js" defer></script>
+<script src="../../assets/scenes.js" defer></script>
+<script src="../../assets/site.js" defer></script>
+</head>
+<body class="proj" style="--c:var(--violet)">
+  <a class="skip" href="#main"><span lang="en">Skip to content</span><span lang="pt-BR">Pular para o conteúdo</span></a>
+  <div class="vignette" aria-hidden="true"></div>
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="../../">Matheus Marcondes</a><span class="sep" aria-hidden="true">/</span><a href="../">CEFET-MG</a><span class="sep" aria-hidden="true">/</span><span aria-current="page"><span lang="en">Prosthetic feet, measured</span><span lang="pt-BR">Pés protéticos, medidos</span></span></nav>
+  
+  <div class="toolbar" id="toolbar">
+    <div class="seg" role="group" aria-label="Language / Idioma">
+      <button type="button" class="seg-b" data-set-lang="en" aria-pressed="false">EN</button>
+      <button type="button" class="seg-b" data-set-lang="pt" aria-pressed="false">PT</button>
+    </div>
+    <div class="linkmenu" id="linkmenu" data-open="false">
+      <button class="linkmenu-btn" id="linkBtn" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="linkPop" data-aria-en="Open links" data-aria-pt="Abrir links" aria-label="Open links"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" /><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" /></svg></button>
+      <div class="linkmenu-pop" id="linkPop" role="menu" aria-label="Links">
+        <a role="menuitem" href="https://www.linkedin.com/in/matheus-marcondes/" target="_blank" rel="noopener">LinkedIn <span class="arrow" aria-hidden="true">↗</span></a>
+        <a role="menuitem" href="https://github.com/matheusmarcondes1" target="_blank" rel="noopener">GitHub <span class="arrow" aria-hidden="true">↗</span></a>
+        <a role="menuitem" href="https://orcid.org/0009-0004-8475-1406" target="_blank" rel="noopener">ORCID <span class="arrow" aria-hidden="true">↗</span></a>
+        <a role="menuitem" href="http://lattes.cnpq.br/9754941348911900" target="_blank" rel="noopener">Lattes <span class="arrow" aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </div>
+
+  <main class="page" id="main">
+    <header class="grid phead">
+      <div class="side">
+        <p class="kicker"><a href="../">CEFET-MG</a></p>
+        <p class="pmeta"><span lang="en">Author · technical final project</span><span lang="pt-BR">Autor · trabalho de conclusão de curso</span></p>
+        <p class="pmeta dim"><span lang="en">Feb 2022 – Nov 2022</span><span lang="pt-BR">fev 2022 – nov 2022</span></p>
+        <p class="pmeta dim"><span lang="en">10 mo</span><span lang="pt-BR">10 meses</span></p>
+      </div>
+      <div>
+        <h1 class="ptitle"><span lang="en">Prosthetic feet, measured</span><span lang="pt-BR">Pés protéticos, medidos</span></h1>
+        <p class="tagline" lang="en">How much does the design of a prosthetic foot change the way someone walks? A biomechanics review with a MATLAB gait model.</p><p class="tagline" lang="pt-BR">Quanto o projeto de um pé protético muda o jeito de alguém andar? Uma revisão de biomecânica com um modelo de marcha em MATLAB.</p>
+        <p class="status"><span class="dot" aria-hidden="true"></span><span lang="en">Defended · 2022</span><span lang="pt-BR">Defendido · 2022</span></p>
+      </div>
+    </header>
+
+    <section class="stage-wrap" aria-label="How it works">
+      <div class="grid how-head"><h2 class="h side"><span lang="en">How it works</span><span lang="pt-BR">Como funciona</span></h2><div><p class="how-title" lang="en">A foot is a spring with a job.</p><p class="how-title" lang="pt-BR">Um pé é uma mola com uma função.</p><p class="how-lede" lang="en">During the stance phase the prosthetic foot stores energy as the body rolls over it, and gives part of it back at push-off. How much it returns — and when — changes walking speed, symmetry and effort.</p><p class="how-lede" lang="pt-BR">Na fase de apoio, o pé protético armazena energia enquanto o corpo passa sobre ele e devolve parte dela no impulso. Quanto ele devolve — e quando — muda a velocidade, a simetria e o esforço da marcha.</p></div></div>
+      <div class="stage ascii" data-ascii="scene" data-cfg="{&quot;scene&quot;:&quot;gait&quot;}" role="img" aria-label="How much does the design of a prosthetic foot change the way someone walks? A biomechanics review with a MATLAB gait model."></div>
+      <ol class="legend"><li><b><i>01</i><span lang="en">Socket</span><span lang="pt-BR">Encaixe</span></b><p lang="en">The interface with the residual limb — where comfort and load transfer are won or lost.</p><p lang="pt-BR">A interface com o coto — onde se ganha ou se perde conforto e transferência de carga.</p></li><li><b><i>02</i><span lang="en">Pylon</span><span lang="pt-BR">Pilão</span></b><p lang="en">The structural tube that carries the load to the foot.</p><p lang="pt-BR">O tubo estrutural que leva a carga até o pé.</p></li><li><b><i>03</i><span lang="en">Energy-storing foot</span><span lang="pt-BR">Pé de restituição de energia</span></b><p lang="en">A carbon-fibre keel that bends in stance and springs back at push-off (ESAR).</p><p lang="pt-BR">Uma quilha de fibra de carbono que flexiona no apoio e devolve energia no impulso (ESAR).</p></li><li><b><i>04</i><span lang="en">Ankle angle · gait cycle</span><span lang="pt-BR">Ângulo do tornozelo · ciclo</span></b><p lang="en">How each design follows — or misses — the intact ankle over one stride.</p><p lang="pt-BR">Como cada projeto acompanha — ou não — o tornozelo intacto ao longo de uma passada.</p></li></ol>
+    </section>
+
+    <section class="metrics " aria-label="By the numbers">
+    <div class="metric">
+        <div class="ascii counter" data-ascii="counter" data-cfg="{&quot;value&quot;:34,&quot;decimals&quot;:0,&quot;prefix&quot;:&quot;&quot;,&quot;suffix&quot;:&quot;&quot;,&quot;color&quot;:&quot;violet&quot;}" role="img" aria-label="34"><span class="metric-fallback">34</span></div>
+        <p class="metric-label" lang="en">studies included in the review</p><p class="metric-label" lang="pt-BR">estudos incluídos na revisão</p>
+      </div><div class="metric">
+        <div class="ascii counter" data-ascii="counter" data-cfg="{&quot;value&quot;:3,&quot;decimals&quot;:0,&quot;prefix&quot;:&quot;&quot;,&quot;suffix&quot;:&quot;&quot;,&quot;color&quot;:&quot;indigo&quot;}" role="img" aria-label="3"><span class="metric-fallback">3</span></div>
+        <p class="metric-label" lang="en">foot designs compared</p><p class="metric-label" lang="pt-BR">projetos de pé comparados</p>
+      </div><div class="metric">
+        <div class="ascii counter" data-ascii="counter" data-cfg="{&quot;value&quot;:100,&quot;decimals&quot;:0,&quot;prefix&quot;:&quot;&quot;,&quot;suffix&quot;:&quot;%&quot;,&quot;color&quot;:&quot;blue&quot;}" role="img" aria-label="100%"><span class="metric-fallback">100%</span></div>
+        <p class="metric-label" lang="en">of the gait cycle modelled</p><p class="metric-label" lang="pt-BR">do ciclo de marcha modelado</p>
+      </div><div class="metric">
+        <div class="ascii counter" data-ascii="counter" data-cfg="{&quot;value&quot;:1,&quot;decimals&quot;:0,&quot;prefix&quot;:&quot;&quot;,&quot;suffix&quot;:&quot;&quot;,&quot;color&quot;:&quot;lime&quot;}" role="img" aria-label="1"><span class="metric-fallback">1</span></div>
+        <p class="metric-label" lang="en">MATLAB gait model</p><p class="metric-label" lang="pt-BR">modelo de marcha em MATLAB</p>
+      </div>
+  </section>
+
+    <section class="grid sec">
+      <h2 class="h side"><span lang="en">What it is</span><span lang="pt-BR">O que é</span></h2>
+      <div class="prose"><div lang="en"><p>My final project for the Mechatronics technical course at CEFET-MG evaluated the biomechanics of lower-limb prostheses and compared prosthetic-foot designs — SACH (solid ankle, cushion heel), single-axis and energy-storing-and-returning (ESAR) feet — on performance during gait.</p><p>It combined a structured literature review with a simple MATLAB model of the gait cycle, to put numbers on the trade-offs between designs.</p></div><div lang="pt-BR"><p>Meu TCC do curso técnico em Mecatrônica no CEFET-MG avaliou a biomecânica de próteses de membro inferior e comparou projetos de pés protéticos — SACH (tornozelo rígido, calcanhar amortecido), de eixo simples e com armazenamento e restituição de energia (ESAR) — pelo desempenho na marcha.</p><p>Ele combinou uma revisão bibliográfica estruturada com um modelo simples do ciclo de marcha em MATLAB, para colocar números nas escolhas entre os projetos.</p></div></div>
+    </section>
+
+    <section class="grid sec">
+      <h2 class="h side"><span lang="en">My contribution</span><span lang="pt-BR">Minha contribuição</span></h2>
+      <div class="prose"><ul class="dash" lang="en"><li>Ran a structured literature review on PubMed: built the search strings, screened the records and extracted gait data from the included studies.</li><li>Built a MATLAB model of the gait cycle to compare ankle kinematics and energy return across foot designs.</li><li>Compared the designs on energy return, push-off, gait symmetry and fit for different activity levels (K-levels).</li><li>Wrote and defended the thesis.</li></ul><ul class="dash" lang="pt-BR"><li>Conduzi uma revisão bibliográfica estruturada no PubMed: montei as strings de busca, fiz a triagem dos registros e extraí dados de marcha dos estudos incluídos.</li><li>Construí um modelo do ciclo de marcha em MATLAB para comparar a cinemática do tornozelo e a restituição de energia entre os projetos de pé.</li><li>Comparei os projetos por restituição de energia, impulso, simetria da marcha e adequação a diferentes níveis de atividade (K-levels).</li><li>Escrevi e defendi o trabalho.</li></ul></div>
+    </section>
+
+    <section class="grid sec">
+      <h2 class="h side"><span lang="en">Why it matters</span><span lang="pt-BR">Por que importa</span></h2>
+      <div class="prose"><div lang="en"><p>Choosing a foot is choosing how someone will walk for years. The project showed me the gap between a well-designed component and a device that fits a person's life — the question that has guided my work since.</p></div><div lang="pt-BR"><p>Escolher um pé é escolher como alguém vai andar por anos. O projeto me mostrou a distância entre um componente bem projetado e um dispositivo que cabe na vida de uma pessoa — a pergunta que guia meu trabalho desde então.</p></div></div>
+    </section>
+
+    <section class="grid sec">
+      <h2 class="h side"><span lang="en">Data</span><span lang="pt-BR">Dados</span></h2>
+      <div class="charts">
+          <figure class="chart">
+            <figcaption><span class="chart-title"><span lang="en">Literature screening (PRISMA-style)</span><span lang="pt-BR">Triagem da literatura (no estilo PRISMA)</span></span> <span class="badge"><span lang="en">illustrative data</span><span lang="pt-BR">dados ilustrativos</span></span></figcaption>
+            <div class="ascii funnel" data-ascii="funnel" data-cfg="{&quot;items&quot;:[{&quot;label&quot;:{&quot;en&quot;:&quot;Records found on PubMed&quot;,&quot;pt&quot;:&quot;Registros encontrados no PubMed&quot;},&quot;value&quot;:412,&quot;color&quot;:&quot;blue&quot;},{&quot;label&quot;:{&quot;en&quot;:&quot;Screened by title and abstract&quot;,&quot;pt&quot;:&quot;Triados por título e resumo&quot;},&quot;value&quot;:268,&quot;color&quot;:&quot;indigo&quot;},{&quot;label&quot;:{&quot;en&quot;:&quot;Full texts assessed&quot;,&quot;pt&quot;:&quot;Textos completos avaliados&quot;},&quot;value&quot;:61,&quot;color&quot;:&quot;violet&quot;},{&quot;label&quot;:{&quot;en&quot;:&quot;Included&quot;,&quot;pt&quot;:&quot;Incluídos&quot;},&quot;value&quot;:34,&quot;color&quot;:&quot;lime&quot;}]}" role="img" aria-label="Literature screening (PRISMA-style)"></div>
+          </figure>
+          <figure class="chart">
+            <figcaption><span class="chart-title"><span lang="en">Energy returned at push-off, by design</span><span lang="pt-BR">Energia devolvida no impulso, por projeto</span></span> <span class="badge"><span lang="en">illustrative data</span><span lang="pt-BR">dados ilustrativos</span></span></figcaption>
+            <div class="ascii bars" data-ascii="bars" data-cfg="{&quot;unit&quot;:&quot;%&quot;,&quot;items&quot;:[{&quot;label&quot;:{&quot;en&quot;:&quot;SACH&quot;,&quot;pt&quot;:&quot;SACH&quot;},&quot;value&quot;:31,&quot;color&quot;:&quot;violet&quot;},{&quot;label&quot;:{&quot;en&quot;:&quot;Single-axis&quot;,&quot;pt&quot;:&quot;Eixo simples&quot;},&quot;value&quot;:42,&quot;color&quot;:&quot;indigo&quot;},{&quot;label&quot;:{&quot;en&quot;:&quot;ESAR (carbon keel)&quot;,&quot;pt&quot;:&quot;ESAR (quilha de carbono)&quot;},&quot;value&quot;:68,&quot;color&quot;:&quot;lime&quot;}]}" role="img" aria-label="Energy returned at push-off, by design"></div>
+          </figure>
+      </div>
+    </section>
+
+    <section class="grid sec">
+      <h2 class="h side"><span lang="en">Skills &amp; tools</span><span lang="pt-BR">Habilidades e ferramentas</span></h2>
+      <div>
+        <p class="sub dim"><span lang="en">Tools</span><span lang="pt-BR">Ferramentas</span></p>
+        <ul class="tools"><li class="tool" style="--c:var(--indigo)"><pre class="tool-ico" aria-hidden="true" data-g="/\_/\">╭─────╮
+│/\_/\│
+╰─────╯</pre><span class="tool-name">MATLAB</span></li><li class="tool" style="--c:var(--violet)"><pre class="tool-ico" aria-hidden="true" data-g="PMID&gt;">╭─────╮
+│PMID&gt;│
+╰─────╯</pre><span class="tool-name">PubMed</span></li><li class="tool" style="--c:var(--violet)"><pre class="tool-ico" aria-hidden="true" data-g="[ref]">╭─────╮
+│[ref]│
+╰─────╯</pre><span class="tool-name">Zotero</span></li><li class="tool" style="--c:var(--blue)"><pre class="tool-ico" aria-hidden="true" data-g="#|#|#">╭─────╮
+│#|#|#│
+╰─────╯</pre><span class="tool-name">Excel</span></li><li class="tool" style="--c:var(--violet)"><pre class="tool-ico" aria-hidden="true" data-g="\TeX ">╭─────╮
+│\TeX │
+╰─────╯</pre><span class="tool-name">LaTeX</span></li></ul>
+        <p class="sub dim"><span lang="en">Skills</span><span lang="pt-BR">Habilidades</span></p>
+        <ul class="skills" lang="en"><li>Biomechanics</li><li>Structured literature review</li><li>Modeling & simulation</li><li>Data analysis</li><li>Scientific writing</li></ul><ul class="skills" lang="pt-BR"><li>Biomecânica</li><li>Revisão bibliográfica estruturada</li><li>Modelagem e simulação</li><li>Análise de dados</li><li>Escrita científica</li></ul>
+        
+      </div>
+    </section>
+
+    <nav class="pager" aria-label="Projects">
+      <a class="pg prev" href="../../leb-labbio/finep/" data-shark><span class="dim">← <span lang="en">Previous project</span><span lang="pt-BR">Projeto anterior</span></span><b><span lang="en">Lower-limb prosthesis · FINEP</span><span lang="pt-BR">Prótese de membro inferior · FINEP</span></b></a>
+      <a class="pg up" href="../" data-shark><span class="dim"><span lang="en">Back to</span><span lang="pt-BR">Voltar para</span></span><b>CEFET-MG</b></a>
+      <a class="pg next" href="../../neurodynamics/opalina/" data-shark><span class="dim"><span lang="en">Next project</span><span lang="pt-BR">Próximo projeto</span> →</span><b>Opalina</b></a>
+    </nav>
+  </main>
+  
+  <footer class="foot">
+    <p><a href="../../">Matheus Marcondes</a> · <a href="mailto:matheus@marcondes.dev">matheus@marcondes.dev</a> · <a href="../../cv/en.md" lang="en">résumé.md</a><a href="../../cv/pt.md" lang="pt-BR">currículo.md</a> · <a href="../../llms.txt">llms.txt</a></p>
+  </footer>
+</body>
+</html>
