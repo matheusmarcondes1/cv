@@ -1,0 +1,39 @@
+# Matheus Marcondes de Oliveira (Matheus Marcondes)
+
+> Control & Automation Engineering student at UFMG building health technology — founder of NeuroDynamics, continuous-improvement intern at Abbott.
+
+This site is a résumé plus portfolio. Machine-readable versions:
+
+- [Résumé in Markdown (English)](https://marcondes.dev/cv/en.md)
+- [Currículo em Markdown (português)](https://marcondes.dev/cv/pt.md)
+- [Résumé PDF (English)](https://marcondes.dev/cv/matheus-marcondes-cv-en.pdf)
+- [Currículo PDF (português)](https://marcondes.dev/cv/matheus-marcondes-cv-pt.pdf)
+
+## Experience pages
+
+- [NeuroDynamics](https://marcondes.dev/neurodynamics/): Founder & Head
+- [Abbott Laboratories](https://marcondes.dev/abbott/): Continuous Improvement Intern
+- [LEB & LABBIO](https://marcondes.dev/leb-labbio/): Undergraduate Researcher
+- [CEFET-MG](https://marcondes.dev/cefet/): Technical Diploma in Mechatronics
+
+## Project pages
+
+- [Opalina](https://marcondes.dev/neurodynamics/opalina/): Phrenic-nerve stimulation timed to the ventilator's breath, to fight diaphragm atrophy and ease weaning.
+- [SOMA](https://marcondes.dev/neurodynamics/soma/): 31 modules on Supabase: time logs, kanban, OKRs, document control, training, lab check-in.
+- [Nebula](https://marcondes.dev/neurodynamics/nebula/): Frontal β-band concentration detected from 2 EEG channels switches FES on in under 250 ms.
+- [Calima](https://marcondes.dev/neurodynamics/calima/): IMU-synchronized FES-cycling for post-stroke rehab, with Visuri and Hospital Paulo de Tarso.
+- [Directing the portfolio](https://marcondes.dev/neurodynamics/direction/): Portfolio, people and partners: from clinical FES systems to BCIs and AI-assisted diagnostics.
+- [Founding NeuroDynamics](https://marcondes.dev/neurodynamics/founding/): Statute, org chart, brand and quality system — from a founding group to ~40 members in seven months.
+- [Software andon](https://marcondes.dev/abbott/andon/): A call-and-respond system on existing PCs and screens, with live metrics and a bottleneck heat map.
+- [Visual management & BI](https://marcondes.dev/abbott/visual/): Tiered daily management, KPI boards and BI: a Power BI skills matrix and an Excel workload control.
+- [Cybathlon 2024](https://marcondes.dev/leb-labbio/cybathlon/): Built the team, revived the FES trike, raised the funds and managed the campaign to race the FES Bike in Zurich.
+- [Lower-limb prosthesis · FINEP](https://marcondes.dev/leb-labbio/finep/): Planning a FINEP-funded prosthesis made the scale obvious — so I built an organization to carry it.
+- [Prosthetic feet, measured](https://marcondes.dev/cefet/tcc/): SACH vs single-axis vs energy-storing feet: a PubMed review and a MATLAB gait model compared on performance.
+
+## Contact
+
+- Email: matheus@marcondes.dev
+- LinkedIn: https://www.linkedin.com/in/matheus-marcondes/
+- GitHub: https://github.com/matheusmarcondes1
+- ORCID: https://orcid.org/0009-0004-8475-1406
+- Lattes: http://lattes.cnpq.br/9754941348911900

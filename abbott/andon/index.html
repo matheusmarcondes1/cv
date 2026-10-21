@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Software andon — Abbott Laboratories — Matheus Marcondes</title>
+<meta name="description" content="An andon built on the infrastructure the line already had: more than US$11k avoided, less walking, fewer particles in the cleanroom." />
+<meta name="author" content="Matheus Marcondes" />
+<meta name="theme-color" content="#f3f2ef" />
+<meta property="og:title" content="Software andon — Abbott Laboratories — Matheus Marcondes" />
+<meta property="og:description" content="An andon built on the infrastructure the line already had: more than US$11k avoided, less walking, fewer particles in the cleanroom." />
+<meta property="og:url" content="https://marcondes.dev/abbott/andon/" />
+<link rel="canonical" href="https://marcondes.dev/abbott/andon/" />
+<link rel="alternate" type="text/markdown" title="Résumé (Markdown, English)" href="../../cv/en.md" />
+<link rel="alternate" type="text/markdown" title="Currículo (Markdown, português)" href="../../cv/pt.md" />
+<link rel="icon" id="favicon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='6' fill='%2322c55e'/%3E%3C/svg%3E" />
+<link rel="stylesheet" href="../../assets/site.css" />
+<script>(function(){var r=document.documentElement,l=null;try{l=new URLSearchParams(location.search).get("lang")||localStorage.getItem("lang")}catch(e){}if(l!=="en"&&l!=="pt")l=(navigator.language||"").toLowerCase().indexOf("pt")===0?"pt":"en";r.setAttribute("data-lang",l);r.lang=l==="pt"?"pt-BR":"en";})();</script>
+<script id="i18n-title" type="application/json">{"en":"Software andon — Abbott Laboratories — Matheus Marcondes","pt":"Andon em software — Abbott Laboratories — Matheus Marcondes"}</script>
+<script src="../../assets/ascii.js" defer></script>
+<script src="../../assets/scenes.js" defer></script>
+<script src="../../assets/site.js" defer></script>
+</head>
+<body class="proj" style="--c:var(--violet)">
+  <a class="skip" href="#main"><span lang="en">Skip to content</span><span lang="pt-BR">Pular para o conteúdo</span></a>
+  <div class="vignette" aria-hidden="true"></div>
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="../../">Matheus Marcondes</a><span class="sep" aria-hidden="true">/</span><a href="../">Abbott Laboratories</a><span class="sep" aria-hidden="true">/</span><span aria-current="page"><span lang="en">Software andon</span><span lang="pt-BR">Andon em software</span></span></nav>
+  
+  <div class="toolbar" id="toolbar">
+    <div class="seg" role="group" aria-label="Language / Idioma">
+      <button type="button" class="seg-b" data-set-lang="en" aria-pressed="false">EN</button>
+      <button type="button" class="seg-b" data-set-lang="pt" aria-pressed="false">PT</button>
+    </div>
+    <div class="linkmenu" id="linkmenu" data-open="false">
+      <button class="linkmenu-btn" id="linkBtn" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="linkPop" data-aria-en="Open links" data-aria-pt="Abrir links" aria-label="Open links"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" /><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" /></svg></button>
+      <div class="linkmenu-pop" id="linkPop" role="menu" aria-label="Links">
+        <a role="menuitem" href="https://www.linkedin.com/in/matheus-marcondes/" target="_blank" rel="noopener">LinkedIn <span class="arrow" aria-hidden="true">↗</span></a>
+        <a role="menuitem" href="https://github.com/matheusmarcondes1" target="_blank" rel="noopener">GitHub <span class="arrow" aria-hidden="true">↗</span></a>
+        <a role="menuitem" href="https://orcid.org/0009-0004-8475-1406" target="_blank" rel="noopener">ORCID <span class="arrow" aria-hidden="true">↗</span></a>
+        <a role="menuitem" href="http://lattes.cnpq.br/9754941348911900" target="_blank" rel="noopener">Lattes <span class="arrow" aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </div>
+
+  <main class="page" id="main">
+    <header class="grid phead">
+      <div class="side">
+        <p class="kicker"><a href="../">Abbott Laboratories</a></p>
+        <p class="pmeta"><span lang="en">Continuous improvement · builder</span><span lang="pt-BR">Melhoria contínua · desenvolvimento</span></p>
+        <p class="pmeta dim"><span lang="en">Sep 2025 – Feb 2026</span><span lang="pt-BR">set 2025 – fev 2026</span></p>
+        <p class="pmeta dim"><span lang="en">6 mo</span><span lang="pt-BR">6 meses</span></p>
+      </div>
+      <div>
+        <h1 class="ptitle"><span lang="en">Software andon</span><span lang="pt-BR">Andon em software</span></h1>
+        <p class="tagline" lang="en">An andon built on the infrastructure the line already had: more than US$11k avoided, less walking, fewer particles in the cleanroom.</p><p class="tagline" lang="pt-BR">Um andon construído sobre a infraestrutura que a linha já tinha: mais de US$11 mil evitados, menos deslocamento, menos partículas na sala limpa.</p>
+        <p class="status"><span class="dot" aria-hidden="true"></span><span lang="en">Deployed on the line</span><span lang="pt-BR">Implantado na linha</span></p>
+      </div>
+    </header>
+
+    <section class="stage-wrap" aria-label="How it works">
+      <div class="grid how-head"><h2 class="h side"><span lang="en">How it works</span><span lang="pt-BR">Como funciona</span></h2><div><p class="how-title" lang="en">Call, see, respond.</p><p class="how-title" lang="pt-BR">Chamar, ver, responder.</p><p class="how-lede" lang="en">An operator flags a problem from the station; support sees it on a live board, with who called, why and for how long; the data accumulates into a picture of where the flow really gets stuck.</p><p class="how-lede" lang="pt-BR">O operador sinaliza um problema no próprio posto; o suporte vê no painel ao vivo quem chamou, por quê e há quanto tempo; os dados se acumulam em um retrato de onde o fluxo realmente trava.</p></div></div>
+      <div class="stage ascii" data-ascii="scene" data-cfg="{&quot;scene&quot;:&quot;andon&quot;}" role="img" aria-label="An andon built on the infrastructure the line already had: more than US$11k avoided, less walking, fewer particles in the cleanroom."></div>
+      <ol class="legend"><li><b><i>01</i><span lang="en">Call from the station</span><span lang="pt-BR">Chamado no posto</span></b><p lang="en">Operators raise a call on the computer already at their station.</p><p lang="pt-BR">O operador abre o chamado no computador que já está no posto.</p></li><li><b><i>02</i><span lang="en">Live board</span><span lang="pt-BR">Painel ao vivo</span></b><p lang="en">Support sees open calls, reason and elapsed time, and walks straight to the right place.</p><p lang="pt-BR">O suporte vê chamados abertos, motivo e tempo decorrido, e vai direto ao lugar certo.</p></li><li><b><i>03</i><span lang="en">Bottleneck heatmap</span><span lang="pt-BR">Mapa de calor de gargalos</span></b><p lang="en">Calls by station and hour expose where the flow chokes.</p><p lang="pt-BR">Chamados por posto e hora mostram onde o fluxo engasga.</p></li><li><b><i>04</i><span lang="en">Zero new hardware</span><span lang="pt-BR">Zero hardware novo</span></b><p lang="en">Runs on existing PCs, screens and network — no installation project.</p><p lang="pt-BR">Roda em PCs, telas e rede existentes — sem projeto de instalação.</p></li></ol>
+    </section>
+
+    <section class="metrics " aria-label="By the numbers">
+    <div class="metric">
+        <div class="ascii counter" data-ascii="counter" data-cfg="{&quot;value&quot;:11,&quot;decimals&quot;:0,&quot;prefix&quot;:&quot;US$&quot;,&quot;suffix&quot;:&quot;k+&quot;,&quot;color&quot;:&quot;violet&quot;}" role="img" aria-label="US$11k+"><span class="metric-fallback">US$11k+</span></div>
+        <p class="metric-label" lang="en">installation cost avoided (soft savings)</p><p class="metric-label" lang="pt-BR">de instalação evitados (soft savings)</p>
+      </div><div class="metric">
+        <div class="ascii counter" data-ascii="counter" data-cfg="{&quot;value&quot;:0,&quot;decimals&quot;:0,&quot;prefix&quot;:&quot;&quot;,&quot;suffix&quot;:&quot;&quot;,&quot;color&quot;:&quot;lime&quot;}" role="img" aria-label="0"><span class="metric-fallback">0</span></div>
+        <p class="metric-label" lang="en">new hardware installed</p><p class="metric-label" lang="pt-BR">hardware novo instalado</p>
+      </div><div class="metric">
+        <div class="ascii counter" data-ascii="counter" data-cfg="{&quot;value&quot;:4,&quot;decimals&quot;:0,&quot;prefix&quot;:&quot;&quot;,&quot;suffix&quot;:&quot;&quot;,&quot;color&quot;:&quot;indigo&quot;}" role="img" aria-label="4"><span class="metric-fallback">4</span></div>
+        <p class="metric-label" lang="en">gains · flow, productivity, movement, particles</p><p class="metric-label" lang="pt-BR">ganhos · fluxo, produtividade, movimentação, particulado</p>
+      </div>
+  </section>
+
+    <section class="grid sec">
+      <h2 class="h side"><span lang="en">What it is</span><span lang="pt-BR">O que é</span></h2>
+      <div class="prose"><div lang="en"><p>An andon lets an operator signal a problem the moment it happens, so support can respond before the line stops. Instead of buying and installing a hardware andon system, I built a software andon that runs on the computers, screens and network already on the floor of a medical-device manufacturing site.</p><p>Its interface also tracks performance metrics and shows, as a heat map, where along the manufacturing flow the bottlenecks are.</p></div><div lang="pt-BR"><p>Um andon permite que o operador sinalize um problema no momento em que ele acontece, para que o suporte responda antes de a linha parar. Em vez de comprar e instalar um sistema de andon em hardware, construí um andon em software que roda nos computadores, telas e rede que já existiam no chão de fábrica de uma planta de dispositivos médicos.</p><p>A interface também acompanha métricas de desempenho e mostra, em um mapa de calor, onde estão os gargalos ao longo do fluxo de manufatura.</p></div></div>
+    </section>
+
+    <section class="grid sec">
+      <h2 class="h side"><span lang="en">My contribution</span><span lang="pt-BR">Minha contribuição</span></h2>
+      <div class="prose"><ul class="dash" lang="en"><li>Mapped flow problems and stoppage causes on the line together with production and support.</li><li>Designed and built the andon application: station call, live board with call timers, and escalation.</li><li>Built the analytics: calls, response and resolution times, and a heat map that exposes bottlenecks along the manufacturing flow.</li><li>Deployed it on the existing infrastructure, avoiding more than US$11k in installation (soft savings).</li></ul><ul class="dash" lang="pt-BR"><li>Mapeei problemas de fluxo e causas de parada na linha junto com produção e suporte.</li><li>Projetei e construí a aplicação de andon: chamado no posto, painel ao vivo com cronômetro dos chamados e escalonamento.</li><li>Construí a análise: chamados, tempos de resposta e de resolução, e um mapa de calor que expõe gargalos ao longo do fluxo de manufatura.</li><li>Implantei sobre a infraestrutura existente, evitando mais de US$11 mil em instalação (soft savings).</li></ul></div>
+    </section>
+
+    <section class="grid sec">
+      <h2 class="h side"><span lang="en">Why it matters</span><span lang="pt-BR">Por que importa</span></h2>
+      <div class="prose"><div lang="en"><p>Less time lost to stoppages and less walking around to find help — and, in a medical-device plant, fewer people moving through cleanroom areas means less particle generation.</p><p>Because it reuses what was already there, it went from idea to the floor without a capital project.</p></div><div lang="pt-BR"><p>Menos tempo perdido com paradas e menos deslocamento para buscar ajuda — e, em uma planta de dispositivos médicos, menos gente circulando nas salas limpas significa menos geração de particulado.</p><p>Como reaproveita o que já existia, foi da ideia ao chão de fábrica sem projeto de investimento.</p></div></div>
+    </section>
+
+    <section class="grid sec">
+      <h2 class="h side"><span lang="en">Data</span><span lang="pt-BR">Dados</span></h2>
+      <div class="charts">
+          <figure class="chart">
+            <figcaption><span class="chart-title"><span lang="en">Installation cost</span><span lang="pt-BR">Custo de instalação</span></span><span class="chart-note dim"><span lang="en">hardware figure is the quoted installation the software replaced</span><span lang="pt-BR">o valor de hardware é a instalação orçada que o software substituiu</span></span></figcaption>
+            <div class="ascii bars" data-ascii="bars" data-cfg="{&quot;prefix&quot;:&quot;US$&quot;,&quot;items&quot;:[{&quot;label&quot;:{&quot;en&quot;:&quot;Hardware andon&quot;,&quot;pt&quot;:&quot;Andon em hardware&quot;},&quot;value&quot;:11000,&quot;color&quot;:&quot;violet&quot;,&quot;note&quot;:{&quot;en&quot;:&quot;lights, wiring, installation&quot;,&quot;pt&quot;:&quot;torres, cabeamento, instalação&quot;}},{&quot;label&quot;:{&quot;en&quot;:&quot;Software andon&quot;,&quot;pt&quot;:&quot;Andon em software&quot;},&quot;value&quot;:0,&quot;color&quot;:&quot;lime&quot;,&quot;note&quot;:{&quot;en&quot;:&quot;existing PCs, screens, network&quot;,&quot;pt&quot;:&quot;PCs, telas e rede existentes&quot;}}]}" role="img" aria-label="Installation cost"></div>
+          </figure>
+          <figure class="chart">
+            <figcaption><span class="chart-title"><span lang="en">Calls by station and hour</span><span lang="pt-BR">Chamados por posto e hora</span></span> <span class="badge"><span lang="en">illustrative data</span><span lang="pt-BR">dados ilustrativos</span></span></figcaption>
+            <div class="ascii heatmap" data-ascii="heatmap" data-cfg="{&quot;legend&quot;:{&quot;en&quot;:&quot;fewer → more calls&quot;,&quot;pt&quot;:&quot;menos → mais chamados&quot;},&quot;rows&quot;:[&quot;ST1&quot;,&quot;ST2&quot;,&quot;ST3&quot;,&quot;ST4&quot;,&quot;ST5&quot;,&quot;ST6&quot;],&quot;cols&quot;:[&quot;06&quot;,&quot;08&quot;,&quot;10&quot;,&quot;12&quot;,&quot;14&quot;,&quot;16&quot;,&quot;18&quot;,&quot;20&quot;,&quot;22&quot;],&quot;values&quot;:[[1,2,1,0,1,2,1,0,1],[2,1,2,1,1,1,2,1,0],[3,5,7,8,6,7,5,4,3],[1,1,2,1,2,1,1,2,1],[0,1,1,2,1,3,2,1,1],[1,0,1,1,0,1,1,1,0]]}" role="img" aria-label="Calls by station and hour"></div>
+          </figure>
+      </div>
+    </section>
+
+    <section class="grid sec">
+      <h2 class="h side"><span lang="en">Skills &amp; tools</span><span lang="pt-BR">Habilidades e ferramentas</span></h2>
+      <div>
+        <p class="sub dim"><span lang="en">Tools</span><span lang="pt-BR">Ferramentas</span></p>
+        <ul class="tools"><li class="tool" style="--c:var(--blue)"><pre class="tool-ico" aria-hidden="true" data-g="[_|_]">╭─────╮
+│[_|_]│
+╰─────╯</pre><span class="tool-name">Power Apps</span></li><li class="tool" style="--c:var(--blue)"><pre class="tool-ico" aria-hidden="true" data-g="(S)=:">╭─────╮
+│(S)=:│
+╰─────╯</pre><span class="tool-name">SharePoint</span></li><li class="tool" style="--c:var(--blue)"><pre class="tool-ico" aria-hidden="true" data-g="&gt;&gt;-o&gt;">╭─────╮
+│&gt;&gt;-o&gt;│
+╰─────╯</pre><span class="tool-name">Power Automate</span></li><li class="tool" style="--c:var(--blue)"><pre class="tool-ico" aria-hidden="true" data-g="_.:|#">╭─────╮
+│_.:|#│
+╰─────╯</pre><span class="tool-name">Power BI</span></li><li class="tool" style="--c:var(--blue)"><pre class="tool-ico" aria-hidden="true" data-g="#|#|#">╭─────╮
+│#|#|#│
+╰─────╯</pre><span class="tool-name">Excel</span></li><li class="tool" style="--c:var(--violet)"><pre class="tool-ico" aria-hidden="true" data-g="PDCA&gt;">╭─────╮
+│PDCA&gt;│
+╰─────╯</pre><span class="tool-name">Lean · A3 · PDCA</span></li></ul>
+        <p class="sub dim"><span lang="en">Skills</span><span lang="pt-BR">Habilidades</span></p>
+        <ul class="skills" lang="en"><li>Lean manufacturing</li><li>Process mapping</li><li>Application development</li><li>Data visualization</li><li>Change management</li><li>Cleanroom / GMP awareness</li></ul><ul class="skills" lang="pt-BR"><li>Manufatura enxuta</li><li>Mapeamento de processos</li><li>Desenvolvimento de aplicações</li><li>Visualização de dados</li><li>Gestão da mudança</li><li>Sala limpa / BPF</li></ul>
+        
+      </div>
+    </section>
+
+    <nav class="pager" aria-label="Projects">
+      <a class="pg prev" href="../../neurodynamics/founding/" data-shark><span class="dim">← <span lang="en">Previous project</span><span lang="pt-BR">Projeto anterior</span></span><b><span lang="en">Founding NeuroDynamics</span><span lang="pt-BR">Criação da NeuroDynamics</span></b></a>
+      <a class="pg up" href="../" data-shark><span class="dim"><span lang="en">Back to</span><span lang="pt-BR">Voltar para</span></span><b>Abbott Laboratories</b></a>
+      <a class="pg next" href="../visual/" data-shark><span class="dim"><span lang="en">Next project</span><span lang="pt-BR">Próximo projeto</span> →</span><b><span lang="en">Visual management &amp; BI</span><span lang="pt-BR">Gestão à vista e BI</span></b></a>
+    </nav>
+  </main>
+  
+  <footer class="foot">
+    <p><a href="../../">Matheus Marcondes</a> · <a href="mailto:matheus@marcondes.dev">matheus@marcondes.dev</a> · <a href="../../cv/en.md" lang="en">résumé.md</a><a href="../../cv/pt.md" lang="pt-BR">currículo.md</a> · <a href="../../llms.txt">llms.txt</a></p>
+  </footer>
+</body>
+</html>
