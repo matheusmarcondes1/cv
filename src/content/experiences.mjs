@@ -14,6 +14,23 @@ export const experiences = [
       en: "A multidisciplinary student healthtech R&amp;D initiative I founded and structured under a corporate-style model, with agile methods and a focus on user-centered, clinically applicable solutions.",
       pt: "Uma iniciativa estudantil multidisciplinar de P&amp;D em healthtech que fundei e estruturei em modelo corporativo, com métodos ágeis e foco em soluções centradas no usuário e aplicáveis na clínica."
     },
+    // Short bullets for the one-page PDF résumé (the site keeps `bullets`).
+    cv: {
+      en: [
+        "Founded and lead a student healthtech R&amp;D group of ~40 members, 5 departments and 9 projects — statute, governance and brand — working with ETH Zürich, InCor-USP and IMREA-USP.",
+        "Project manager of electrical-stimulation systems for the ICU and rehabilitation (Opalina, Calima), with Visuri, InCor – HCFMUSP and Hospital Paulo de Tarso.",
+        "Developed Nebula, a brain–computer-interface-triggered FES system: 2 EEG channels, ~21 Hz β band, trigger in under 250 ms (PIBITI scholarship).",
+        "Product owner and developer of SOMA, the team's management system: 31 modules, ~143 PostgreSQL tables with row-level security, ~4,180 test assertions.",
+        "Set up an R&amp;D quality framework mapped to ISO 13485, ISO 14971, IEC 62304 and ANVISA RDC 751/2022, and bi-weekly sprints that cut feature delivery from months to weeks."
+      ],
+      pt: [
+        "Fundei e lidero um grupo estudantil de P&amp;D em healthtech com ~40 membros, 5 departamentos e 9 projetos — estatuto, governança e marca — com ETH Zürich, InCor-USP e IMREA-USP.",
+        "Gerente de projeto de sistemas de eletroestimulação para UTI e reabilitação (Opalina, Calima), com Visuri, InCor – HCFMUSP e Hospital Paulo de Tarso.",
+        "Desenvolvi o Nebula, sistema de FES acionado por interface cérebro–computador: 2 canais de EEG, banda β ~21 Hz, acionamento em menos de 250 ms (bolsa PIBITI).",
+        "Product owner e desenvolvedor do SOMA, sistema de gestão da equipe: 31 módulos, ~143 tabelas PostgreSQL com RLS, ~4.180 asserções de teste.",
+        "Implantei um framework de qualidade de P&amp;D mapeado para ISO 13485, ISO 14971, IEC 62304 e ANVISA RDC 751/2022, e sprints quinzenais que levaram a entrega de meses para semanas."
+      ]
+    },
     bullets: {
       en: [
         "Built it from the ground up — statute, org chart, brand, and governance — creating a space where engineering, healthcare, and applied research work side by side on assistive health technologies.",
@@ -48,12 +65,25 @@ export const experiences = [
     org: "Abbott Laboratories",
     role: { en: "Continuous Improvement Intern", pt: "Estagiário de Melhoria Contínua" },
     place: { en: "Structural Heart Division, Medical Devices", pt: "Divisão Structural Heart, Dispositivos Médicos" },
+    cvPlace: { en: "Structural Heart Division", pt: "Divisão Structural Heart" },
     from: "2025-08", to: null,
     url: "https://www.abbott.com/en-us/homepage",
     color: "violet",
     summary: {
       en: "Support process optimization and operational excellence in a highly regulated medical-device manufacturing environment, applying lean methods and data analysis.",
       pt: "Apoio a otimização de processos e a excelência operacional em um ambiente de manufatura de dispositivos médicos altamente regulado, aplicando métodos lean e análise de dados."
+    },
+    cv: {
+      en: [
+        "Built a software andon on existing infrastructure, avoiding more than US$11k in automation hardware and cutting motion waste and particle-generation risk in cleanrooms.",
+        "Assessed daily management, tiered meetings, 4P assessment and the Shingo Model to raise continuous-improvement maturity across the site.",
+        "Created a Power BI Lean Six Sigma skills matrix and an Excel workload-control system for inspection teams."
+      ],
+      pt: [
+        "Construí um andon em software sobre a infraestrutura existente, evitando mais de US$11 mil em hardware de automação e reduzindo desperdício de movimentação e risco de particulado em salas limpas.",
+        "Avaliei gestão diária, reuniões por tiers, avaliação 4P e Modelo Shingo para elevar a maturidade de melhoria contínua no site.",
+        "Criei uma matriz de competências Lean Six Sigma em Power BI e um controle de carga de trabalho em Excel para as equipes de inspeção."
+      ]
     },
     bullets: {
       en: [
@@ -90,6 +120,16 @@ export const experiences = [
     summary: {
       en: "Contribute to applied research in biomedical and assistive technologies, supporting design, development, and experimental validation. Work has spanned functional electrical stimulation and brain–computer interfaces for motor rehabilitation, and the biomechanics of lower-limb prosthetics and orthoses.",
       pt: "Contribuo com pesquisa aplicada em tecnologias biomédicas e assistivas, apoiando projeto, desenvolvimento e validação experimental. O trabalho passou por estimulação elétrica funcional e interfaces cérebro–computador para reabilitação motora, e pela biomecânica de próteses e órteses de membro inferior."
+    },
+    cv: {
+      en: [
+        "Team manager of UFMG's FES Bike team at Cybathlon 2024 in Zurich (67 teams, 24 countries): built the team, revived the FES trike, raised funds, ran logistics and FMEA.",
+        "Applied research in FES and brain–computer interfaces for motor rehabilitation and in lower-limb prosthetics; planned a FINEP-funded prosthesis project that grew into NeuroDynamics."
+      ],
+      pt: [
+        "Team manager da equipe de FES Bike da UFMG no Cybathlon 2024 em Zurique (67 equipes, 24 países): montei a equipe, reativei o triciclo de FES, captei recursos, cuidei da logística e do FMEA.",
+        "Pesquisa aplicada em FES e interfaces cérebro–computador para reabilitação motora e em próteses de membro inferior; planejei um projeto de prótese financiado pela FINEP que deu origem à NeuroDynamics."
+      ]
     },
     intro: {
       en: "The Biomedical Engineering Laboratory (LEB) and the Bioengineering Laboratory (LABBIO) at UFMG are where I started — first taking a team to Cybathlon, then planning the work that grew into NeuroDynamics.",

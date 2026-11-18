@@ -1,6 +1,6 @@
 # Matheus Marcondes de Oliveira (Matheus Marcondes)
 
-Control & Automation Engineering student at UFMG building health technology — founder of NeuroDynamics, continuous-improvement intern at Abbott.
+Production Engineering student at UFMG building health technology — founder of NeuroDynamics, continuous-improvement intern at Abbott.
 
 - Website: https://marcondes.dev
 - Email: matheus@marcondes.dev
@@ -13,7 +13,7 @@ Control & Automation Engineering student at UFMG building health technology — 
 
 ## About
 
-I'm an undergraduate in Control and Automation Engineering at UFMG, and since 2019 I've kept circling one question: how does a piece of technology actually reach the person who needs it? That thread runs through the work I care about most — prosthetics and orthoses, neuromodulation, functional electrical stimulation, and brain–computer interfaces — and it's taught me to value verification, risk, and regulatory rigor as much as the idea itself. I started NeuroDynamics, a student healthtech R&D group now around 40 people, because I wanted engineering and healthcare in the same room; lately I've been learning what operational excellence looks like up close as a continuous-improvement intern at Abbott. I'm early in all of this, and I try to stay honest about what I know and what I'm still figuring out — but I show up, I follow through, and I care more about building something genuinely useful than something merely impressive.
+I'm an undergraduate in Production Engineering at UFMG — I studied Control and Automation Engineering until the second semester of 2026, then switched — and since 2019 I've kept circling one question: how does a piece of technology actually reach the person who needs it? That thread runs through the work I care about most — prosthetics and orthoses, neuromodulation, functional electrical stimulation, and brain–computer interfaces — and it's taught me to value verification, risk, and regulatory rigor as much as the idea itself. I started NeuroDynamics, a student healthtech R&D group now around 40 people, because I wanted engineering and healthcare in the same room; lately I've been learning what operational excellence looks like up close as a continuous-improvement intern at Abbott. I'm early in all of this, and I try to stay honest about what I know and what I'm still figuring out — but I show up, I follow through, and I care more about building something genuinely useful than something merely impressive.
 
 ## Experience
 
@@ -212,7 +212,8 @@ Page: https://marcondes.dev/cefet/tcc/
 
 ## Education
 
-- B.Eng. Control & Automation Engineering — Federal University of Minas Gerais (UFMG) (Expected 2028)
+- B.Eng. Production Engineering — Federal University of Minas Gerais (UFMG) (In progress)
+- Control & Automation Engineering — Federal University of Minas Gerais (UFMG) (2023 – 2026 (2nd semester) · switched to Production Engineering)
 - Technical Diploma in Mechatronics — Federal Center for Technological Education (CEFET-MG) (2022 · final project on prosthetic feet)
 
 ## Skills

@@ -19,19 +19,25 @@ export const person = {
     { label: "Lattes", href: "http://lattes.cnpq.br/9754941348911900" }
   ],
   headline: {
-    en: "Control & Automation Engineering student at UFMG building health technology — founder of NeuroDynamics, continuous-improvement intern at Abbott.",
-    pt: "Estudante de Engenharia de Controle e Automação na UFMG construindo tecnologia em saúde — fundador da NeuroDynamics, estagiário de melhoria contínua na Abbott."
+    en: "Production Engineering student at UFMG building health technology — founder of NeuroDynamics, continuous-improvement intern at Abbott.",
+    pt: "Estudante de Engenharia de Produção na UFMG construindo tecnologia em saúde — fundador da NeuroDynamics, estagiário de melhoria contínua na Abbott."
   },
   description: {
-    en: "Matheus Marcondes — Control & Automation Engineering student at UFMG, working in HealthTech and medical-device R&D. Founder of NeuroDynamics; Continuous Improvement Intern at Abbott.",
-    pt: "Matheus Marcondes — estudante de Engenharia de Controle e Automação na UFMG, atuando em HealthTech e P&D de dispositivos médicos. Fundador da NeuroDynamics; estagiário de Melhoria Contínua na Abbott."
+    en: "Matheus Marcondes — Production Engineering student at UFMG (formerly Control & Automation Engineering), working in HealthTech and medical-device R&D. Founder of NeuroDynamics; Continuous Improvement Intern at Abbott.",
+    pt: "Matheus Marcondes — estudante de Engenharia de Produção na UFMG (antes, Engenharia de Controle e Automação), atuando em HealthTech e P&D de dispositivos médicos. Fundador da NeuroDynamics; estagiário de Melhoria Contínua na Abbott."
+  },
+  // Two-sentence summary for the one-page PDF résumé.
+  summary: {
+    en: "Production Engineering undergraduate at UFMG (Control and Automation Engineering until the second semester of 2026) working where engineering meets healthcare — medical-device R&amp;D, functional electrical stimulation, brain–computer interfaces and operational excellence. Founder of NeuroDynamics, a ~40-member student healthtech R&amp;D group, and continuous-improvement intern at Abbott.",
+    pt: "Graduando em Engenharia de Produção na UFMG (Engenharia de Controle e Automação até 2026/2), atuando onde engenharia e saúde se encontram — P&amp;D de dispositivos médicos, estimulação elétrica funcional, interfaces cérebro–computador e excelência operacional. Fundador da NeuroDynamics, grupo estudantil de P&amp;D em healthtech com ~40 membros, e estagiário de melhoria contínua na Abbott."
   },
   question: {
     en: "how does a piece of technology actually reach the person who needs it?",
     pt: "como uma tecnologia realmente chega à pessoa que precisa dela?"
   },
   about: {
-    en: `I'm an undergraduate in Control and Automation Engineering at UFMG, and since 2019 I've kept
+    en: `I'm an undergraduate in Production Engineering at UFMG — I studied Control and Automation
+        Engineering until the second semester of 2026, then switched — and since 2019 I've kept
         circling one question: <span class="q">how does a piece of technology actually reach the person who needs it?</span>
         That thread runs through the work I care about most — prosthetics and orthoses, neuromodulation,
         functional electrical stimulation, and brain–computer interfaces — and it's taught me to value
@@ -41,8 +47,8 @@ export const person = {
         continuous-improvement intern at Abbott. I'm early in all of this, and I try to stay honest about
         what I know and what I'm still figuring out — but I show up, I follow through, and I care more
         about building something genuinely useful than something merely impressive.`,
-    pt: `Sou graduando em Engenharia de Controle e Automação na UFMG e, desde 2019, venho rodeando uma
-        pergunta: <span class="q">como uma tecnologia realmente chega à pessoa que precisa dela?</span>
+    pt: `Sou graduando em Engenharia de Produção na UFMG — cursei Engenharia de Controle e Automação
+        até 2026/2 e depois mudei de curso — e, desde 2019, venho rodeando uma pergunta: <span class="q">como uma tecnologia realmente chega à pessoa que precisa dela?</span>
         Esse fio atravessa o trabalho de que mais gosto — próteses e órteses, neuromodulação,
         estimulação elétrica funcional e interfaces cérebro–computador — e me ensinou a valorizar
         verificação, risco e rigor regulatório tanto quanto a ideia em si. Criei a NeuroDynamics, um grupo
@@ -54,19 +60,31 @@ export const person = {
   }
 };
 
+// Fields read only by the one-page PDF: education `schoolShort` / `cvWhen`,
+// `person.summary`, and `cv` / `cvPlace` on each experience.
 export const resume = {
   education: [
     {
-      degree: { en: "B.Eng. Control &amp; Automation Engineering", pt: "Engenharia de Controle e Automação" },
+      degree: { en: "B.Eng. Production Engineering", pt: "Engenharia de Produção" },
       school: { en: "Federal University of Minas Gerais (UFMG)", pt: "Universidade Federal de Minas Gerais (UFMG)" },
       href: "https://ufmg.br/",
-      when: { en: "Expected 2028", pt: "Previsão 2028" }
+      schoolShort: "UFMG",
+      when: { en: "In progress", pt: "Em andamento" }
+    },
+    {
+      degree: { en: "Control &amp; Automation Engineering", pt: "Engenharia de Controle e Automação" },
+      school: { en: "Federal University of Minas Gerais (UFMG)", pt: "Universidade Federal de Minas Gerais (UFMG)" },
+      href: "https://ufmg.br/",
+      schoolShort: "UFMG",
+      when: { en: "2023 – 2026 (2nd semester) · switched to Production Engineering", pt: "2023 – 2026/2 · mudança para Engenharia de Produção" }
     },
     {
       degree: { en: "Technical Diploma in Mechatronics", pt: "Técnico em Mecatrônica" },
       school: { en: "Federal Center for Technological Education (CEFET-MG)", pt: "Centro Federal de Educação Tecnológica (CEFET-MG)" },
       href: "https://www.cefetmg.br/",
+      schoolShort: "CEFET-MG",
       when: { en: "2022 · final project on prosthetic feet", pt: "2022 · TCC sobre pés protéticos" },
+      cvWhen: { en: "2019 – 2022 · final project on prosthetic feet", pt: "2019 – 2022 · TCC sobre pés protéticos" },
       page: "cefet"
     }
   ],

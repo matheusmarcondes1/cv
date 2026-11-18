@@ -1,5 +1,6 @@
-// Renders cv/en.html and cv/pt.html to PDF with Chromium (via Playwright),
-// then stamps document metadata with src/pdfmeta.py.
+// Renders cv/en.html and cv/pt.html to one-page PDFs with Chromium (via
+// Playwright), then stamps document metadata with src/pdfmeta.py, which fails
+// if a résumé no longer fits on a single page.
 //   node src/build.mjs && node src/pdf.mjs
 // The PDFs are tagged (structure tree for screen readers and parsers), carry a
 // bookmark outline from the headings, and keep a single reading column with
@@ -17,10 +18,10 @@ try { ({ chromium } = require("playwright")); }
 catch { ({ chromium } = createRequire("/opt/node22/lib/node_modules/")("playwright")); }
 
 const META = {
-  en: { title: "Matheus Marcondes de Oliveira — Résumé", subject: "Résumé and project portfolio: medical-device R&D, FES, brain–computer interfaces, operational excellence.", lang: "en" },
-  pt: { title: "Matheus Marcondes de Oliveira — Currículo", subject: "Currículo e portfólio de projetos: P&D de dispositivos médicos, FES, interfaces cérebro–computador, excelência operacional.", lang: "pt-BR" }
+  en: { title: "Matheus Marcondes de Oliveira — Résumé", subject: "One-page résumé: medical-device R&D, FES, brain–computer interfaces, operational excellence.", lang: "en" },
+  pt: { title: "Matheus Marcondes de Oliveira — Currículo", subject: "Currículo de uma página: P&D de dispositivos médicos, FES, interfaces cérebro–computador, excelência operacional.", lang: "pt-BR" }
 };
-const KEYWORDS = "Matheus Marcondes; NeuroDynamics; UFMG; Abbott; medical devices; FES; functional electrical stimulation; brain-computer interface; BCI; EEG; ISO 13485; ISO 14971; project management; Lean Six Sigma; Power BI; Supabase; PostgreSQL";
+const KEYWORDS = "Matheus Marcondes; NeuroDynamics; UFMG; Production Engineering; Engenharia de Produção; Abbott; medical devices; FES; functional electrical stimulation; brain-computer interface; BCI; EEG; ISO 13485; ISO 14971; project management; Lean Six Sigma; Power BI; Supabase; PostgreSQL";
 
 const browser = await chromium.launch();
 for (const l of ["en", "pt"]) {
@@ -28,7 +29,7 @@ for (const l of ["en", "pt"]) {
   await page.goto(pathToFileURL(join(ROOT, "cv", `${l}.html`)).href, { waitUntil: "load" });
   const out = join(ROOT, "cv", `matheus-marcondes-cv-${l}.pdf`);
   await page.pdf({ path: out, format: "A4", printBackground: false, tagged: true, outline: true, preferCSSPageSize: true });
-  execFileSync("python3", ["-I", join(ROOT, "src", "pdfmeta.py"), out, META[l].title, META[l].subject, KEYWORDS, META[l].lang], { stdio: "inherit" });
+  execFileSync("python3", ["-I", join(ROOT, "src", "pdfmeta.py"), out, META[l].title, META[l].subject, KEYWORDS, META[l].lang, "1"], { stdio: "inherit" });
   console.log("pdf:", out);
   await page.close();
 }
