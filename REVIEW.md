@@ -9,6 +9,8 @@ Tudo o que eu supus, inventei ou não consegui confirmar está listado aqui, por
 - O texto do currículo na página inicial foi mantido; só a linha da Abbott sobre o andon foi atualizada com os US$11 mil.
 - Não consegui abrir o ascii-magic.com daqui (o domínio não resolveu na rede deste ambiente). As animações seguem a linguagem ASCII clássica: rampas de densidade, arte de linha `_.-'`, caracteres de bloco.
 - Os PDFs (`cv/*.pdf`) saem de `cv/en.html` e `cv/pt.html` com `node src/pdf.mjs` (Playwright + Chromium + pypdf). Rode depois de mudar o conteúdo.
+- O PDF agora tem uma página só: usa `person.summary` e os bullets curtos `cv` de cada experiência; o site e o Markdown continuam com a versão completa. O `pdf.mjs` falha se o PDF passar de uma página.
+- Formação: Controle e Automação até 2026/2, depois Engenharia de Produção. Tirei a "Previsão 2028" porque a mudança de curso pode alterar a data — informe a nova previsão (campo `when` em `resume.education`).
 
 ## NeuroDynamics
 

@@ -1,6 +1,6 @@
 # Matheus Marcondes de Oliveira (Matheus Marcondes)
 
-> Control & Automation Engineering student at UFMG building health technology — founder of NeuroDynamics, continuous-improvement intern at Abbott.
+> Production Engineering student at UFMG building health technology — founder of NeuroDynamics, continuous-improvement intern at Abbott.
 
 This site is a résumé plus portfolio. Machine-readable versions:
 

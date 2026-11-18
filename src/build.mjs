@@ -451,28 +451,20 @@ function md(l) {
   return out.join("\n");
 }
 
-/* ---------- print résumé (source of the PDF): one column, linear, text-first ---------- */
+/* ---------- print résumé (source of the PDF): one A4 page, one column, text-first ----------
+   The site and the Markdown keep the full story; the PDF is the short version:
+   summary, each job's `cv` bullets, education, skills, and one line each for
+   languages, governance and courses. src/pdf.mjs fails if it grows past a page. */
 function printPage(l) {
   const L = (v) => pick(v, l);
   const pt = l === "pt";
-  const S = (v) => strip(L(v));
-  const exp = experiences.map((e) => `
+  const when = (e) => `${monthLabel(e.from, l)} – ${monthLabel(e.to, l)}`;
+  const bare = (href) => href.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
+  const link = (href, text = bare(href)) => `<a href="${href}">${text}</a>`;
+  const exp = experiences.filter((e) => !e.education).map((e) => `
   <section class="x">
-    <h3>${e.org} — ${L(e.role)}</h3>
-    <p class="m">${L(e.place)} | ${e.from} – ${e.to || (pt ? "atual" : "present")} | ${e.url}</p>
-    <p>${L(e.summary)}</p>
-    ${e.projects.map((slug) => {
-      const p = projects[slug];
-      return `
-    <div class="p">
-      <h4>${L(nameOf(p))} <span class="m">— ${L(p.role)} | ${p.from} – ${p.to || (pt ? "atual" : "present")}</span></h4>
-      <p>${L(p.tagline)}</p>
-      <ul>${p.contribution[l].map((b) => `<li>${b}</li>`).join("")}</ul>
-      <p class="kv"><b>${pt ? "Resultados e números" : "Results and numbers"}:</b> ${p.metrics.map((m) => `${strip(L(m.prefix || ""))}${m.value}${strip(L(m.suffix || ""))} ${S(m.label)}`).join("; ")}.</p>
-      <p class="kv"><b>${pt ? "Ferramentas" : "Tools"}:</b> ${p.tools.map((k) => tools[k].name).join(", ")}. <b>${pt ? "Habilidades" : "Skills"}:</b> ${p.skills[l].join(", ")}.</p>
-      <p class="kv"><b>${pt ? "Página do projeto" : "Project page"}:</b> ${person.site}/${p.exp}/${slug}/</p>
-    </div>`;
-    }).join("")}
+    <h3><span><b>${e.org}</b> — ${L(e.role)} <span class="m">· ${L(e.cvPlace || e.place)}</span></span> <span class="d">${when(e)}</span></h3>
+    <ul>${e.cv[l].map((b) => `<li>${b}</li>`).join("")}</ul>
   </section>`).join("");
   return `<!DOCTYPE html>
 <html lang="${HTML_LANG[l]}">
@@ -482,65 +474,51 @@ function printPage(l) {
 <meta name="author" content="${person.fullName}" />
 <meta name="description" content="${attr(strip(L(person.description)))}" />
 <style>
-  @page { size: A4; margin: 14mm 15mm 14mm 15mm; }
+  @page { size: A4; margin: 12mm 14mm 11mm 14mm; }
   * { box-sizing: border-box; }
-  body { font-family: "Helvetica Neue", Helvetica, Arial, "Liberation Sans", sans-serif; font-size: 9.2pt; line-height: 1.36; color: #111; margin: 0; font-variant-ligatures: none; }
-  h1 { font-size: 17pt; margin: 0 0 2pt; font-weight: 600; }
-  h2 { font-size: 11pt; margin: 13pt 0 5pt; padding-bottom: 2pt; border-bottom: 0.6pt solid #999; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; }
-  h3 { font-size: 10.4pt; margin: 9pt 0 1pt; font-weight: 600; }
-  h4 { font-size: 9.8pt; margin: 7pt 0 1pt; font-weight: 600; }
-  p { margin: 2pt 0; }
-  ul { margin: 2pt 0 2pt 0; padding-left: 13pt; }
-  li { margin: 0 0 1.5pt; }
-  .m { color: #444; font-weight: 400; }
-  .kv { color: #222; }
-  .p { margin-left: 8pt; padding-left: 7pt; border-left: 0.6pt solid #bbb; }
-  h3, h4 { break-after: avoid; }
-  li, .kv { break-inside: avoid; }
-  .x > h3 { break-after: avoid; }
-  a { color: #111; text-decoration: none; }
-  .q { font-style: italic; }
-  .contact { margin: 2pt 0 0; }
+  body { font-family: "Helvetica Neue", Helvetica, Arial, "Liberation Sans", sans-serif; font-size: 9.4pt; line-height: 1.34; color: #111; margin: 0; font-variant-ligatures: none; }
+  .top { display: flex; justify-content: space-between; align-items: baseline; gap: 10pt; margin: 0 0 2pt; }
+  h1 { font-size: 18pt; margin: 0; font-weight: 600; letter-spacing: -.01em; }
+  h2 { font-size: 9.6pt; margin: 9.5pt 0 4pt; padding-bottom: 1.5pt; border-bottom: 0.6pt solid #999; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; }
+  h3 { font-size: 9.7pt; margin: 6.5pt 0 1.5pt; font-weight: 400; display: flex; justify-content: space-between; align-items: baseline; gap: 10pt; }
+  h3 b { font-weight: 600; }
+  p { margin: 1.5pt 0; }
+  ul { margin: 1pt 0 0; padding-left: 12pt; }
+  li { margin: 0 0 1.2pt; }
+  .m, .d { color: #444; }
+  .d { white-space: nowrap; }
+  .contact { margin: 1pt 0 0; color: #222; font-size: 8.9pt; }
+  .summary { margin: 8pt 0 0; }
+  .note { margin-top: 8pt; color: #555; font-size: 8.4pt; }
+  h2, h3 { break-after: avoid; }
+  li { break-inside: avoid; }
+  a { color: inherit; text-decoration: none; white-space: nowrap; }
 </style>
 </head>
 <body>
   <header>
-    <h1>${person.fullName}</h1>
-    <p>${L(person.headline)}</p>
-    <p class="contact">${pt ? "Site" : "Website"}: ${person.site} | Email: ${person.email} | ${pt ? "Telefone" : "Phone"}: ${person.phone} | ${L(person.location)}</p>
-    <p class="contact">${person.links.map((k) => `${k.label}: ${k.href}`).join(" | ")}</p>
+    <div class="top"><h1>${person.fullName}</h1><p class="m">${L(person.location)}</p></div>
+    <p class="contact">${[link(person.site), link(`mailto:${person.email}`, person.email), link(`tel:${person.tel}`, person.phone), ...person.links.map((k) => link(k.href))].join(" · ")}</p>
   </header>
+  <p class="summary">${L(person.summary)}</p>
 
-  <h2>${pt ? "Resumo" : "Summary"}</h2>
-  <p>${L(person.about)}</p>
-
-  <h2>${pt ? "Destaques" : "Highlights"}</h2>
-  <ul>
-    <li>${pt ? "Fundador e diretor da NeuroDynamics (UFMG): ~40 membros, 5 departamentos, 9 projetos de healthtech com parceiros clínicos e da indústria." : "Founder and director of NeuroDynamics (UFMG): ~40 members, 5 departments, 9 healthtech projects with clinical and industry partners."}</li>
-    <li>${pt ? "Gerente de projeto de sistemas de eletroestimulação para UTI e reabilitação (Opalina, Calima), com Visuri, InCor – HCFMUSP e Hospital Paulo de Tarso." : "Project manager of electrical-stimulation systems for the ICU and rehabilitation (Opalina, Calima), with Visuri, InCor – HCFMUSP and Hospital Paulo de Tarso."}</li>
-    <li>${pt ? "Desenvolveu um sistema de FES acionado por interface cérebro–computador (Nebula): 2 canais de EEG, banda β ~21 Hz, acionamento < 250 ms, 43,3% das janelas em concentração motora." : "Developed a brain–computer-interface-triggered FES system (Nebula): 2 EEG channels, ~21 Hz β band, < 250 ms trigger, 43.3% of windows in motor concentration."}</li>
-    <li>${pt ? "Product owner e desenvolvedor do SOMA, sistema de gestão da equipe: 31 módulos, ~143 tabelas PostgreSQL com RLS, ~4.180 asserções de teste, 54 PRs." : "Product owner and developer of SOMA, the team's management system: 31 modules, ~143 PostgreSQL tables with RLS, ~4,180 test assertions, 54 PRs."}</li>
-    <li>${pt ? "Abbott (Structural Heart): andon em software sobre infraestrutura existente, mais de US$11 mil evitados em instalação; matriz de competências Lean Six Sigma em Power BI." : "Abbott (Structural Heart): software andon on existing infrastructure, more than US$11k in installation avoided; Lean Six Sigma skills matrix in Power BI."}</li>
-    <li>${pt ? "Team manager da equipe de FES Bike da UFMG no Cybathlon 2024 em Zurique (67 equipes, 24 países): equipe, recursos, logística, FMEA." : "Team manager of UFMG's FES Bike team at Cybathlon 2024 in Zurich (67 teams, 24 countries): team, funding, logistics, FMEA."}</li>
-  </ul>
-
-  <h2>${pt ? "Experiência e projetos" : "Experience and projects"}</h2>
+  <h2>${L(ui.experience)}</h2>
   ${exp}
 
   <h2>${L(ui.education)}</h2>
-  <ul>${resume.education.map((ed) => `<li><b>${L(ed.degree)}</b> — ${L(ed.school)} (${L(ed.when)})</li>`).join("")}</ul>
+  <ul>${resume.education.map((ed) => `<li><b>${L(ed.degree)}</b> — ${L(ed.schoolShort || ed.school)} · ${L(ed.cvWhen || ed.when)}</li>`).join("")}</ul>
 
   <h2>${L(ui.skills)}</h2>
-  <ul>${resume.skills.map((s) => `<li><b>${L(s.cat)}:</b> ${L(s.val)}</li>`).join("")}</ul>
+  <ul>${resume.skills.map((s) => `<li><b>${L(s.cat)}:</b> ${L(s.val)}</li>`).join("")}
+    <li><b>${L(ui.languages)}:</b> ${resume.languages.map((x) => `${L(x.name)} — ${L(x.level)}`).join("; ")}</li></ul>
 
-  <h2>${L(ui.languages)}</h2>
-  <ul>${resume.languages.map((x) => `<li>${L(x.name)} — ${L(x.level)}</li>`).join("")}</ul>
+  <h2>${pt ? "Governança e cursos" : "Governance &amp; courses"}</h2>
+  <ul>
+    <li><b>${L(ui.leadership)}:</b> ${resume.leadership.map((x) => `${L(x.role)} (${L(x.when)})`).join("; ")} — ${L(resume.leadershipNote)}</li>
+    <li><b>${L(ui.courses)}:</b> ${resume.courses.map((c) => `${L(c.name)} — ${L(c.by)}`).join("; ")}</li>
+  </ul>
 
-  <h2>${L(ui.leadership)}</h2>
-  <ul>${resume.leadership.map((x) => `<li>${L(x.role)}, ${L(resume.leadershipNote)} (${L(x.when)})</li>`).join("")}</ul>
-
-  <h2>${L(ui.courses)}</h2>
-  <ul>${resume.courses.map((c) => `<li>${L(c.name)} — ${L(c.by)}</li>`).join("")}</ul>
+  <p class="note">${pt ? "Detalhes, dados e páginas de cada projeto" : "Project pages with details and data"}: ${link(person.site)} · ${pt ? "currículo completo" : "full résumé"}: ${link(`${person.site}/cv/${l}.md`)}</p>
 </body>
 </html>
 `;
@@ -590,6 +568,8 @@ function review() {
     "- O texto do currículo na página inicial foi mantido; só a linha da Abbott sobre o andon foi atualizada com os US$11 mil.",
     "- Não consegui abrir o ascii-magic.com daqui (o domínio não resolveu na rede deste ambiente). As animações seguem a linguagem ASCII clássica: rampas de densidade, arte de linha `_.-'`, caracteres de bloco.",
     "- Os PDFs (`cv/*.pdf`) saem de `cv/en.html` e `cv/pt.html` com `node src/pdf.mjs` (Playwright + Chromium + pypdf). Rode depois de mudar o conteúdo.",
+    "- O PDF agora tem uma página só: usa `person.summary` e os bullets curtos `cv` de cada experiência; o site e o Markdown continuam com a versão completa. O `pdf.mjs` falha se o PDF passar de uma página.",
+    "- Formação: Controle e Automação até 2026/2, depois Engenharia de Produção. Tirei a \"Previsão 2028\" porque a mudança de curso pode alterar a data — informe a nova previsão (campo `when` em `resume.education`).",
     "");
   experiences.forEach((e) => {
     lines.push(`## ${strip(e.org)}`, "");

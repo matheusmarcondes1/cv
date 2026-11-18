@@ -1,6 +1,6 @@
 # Matheus Marcondes de Oliveira (Matheus Marcondes)
 
-Estudante de Engenharia de Controle e Automação na UFMG construindo tecnologia em saúde — fundador da NeuroDynamics, estagiário de melhoria contínua na Abbott.
+Estudante de Engenharia de Produção na UFMG construindo tecnologia em saúde — fundador da NeuroDynamics, estagiário de melhoria contínua na Abbott.
 
 - Site: https://marcondes.dev
 - Email: matheus@marcondes.dev
@@ -13,7 +13,7 @@ Estudante de Engenharia de Controle e Automação na UFMG construindo tecnologia
 
 ## Sobre
 
-Sou graduando em Engenharia de Controle e Automação na UFMG e, desde 2019, venho rodeando uma pergunta: como uma tecnologia realmente chega à pessoa que precisa dela? Esse fio atravessa o trabalho de que mais gosto — próteses e órteses, neuromodulação, estimulação elétrica funcional e interfaces cérebro–computador — e me ensinou a valorizar verificação, risco e rigor regulatório tanto quanto a ideia em si. Criei a NeuroDynamics, um grupo estudantil de P&D em healthtech que hoje reúne cerca de 40 pessoas, porque queria engenharia e saúde na mesma sala; nos últimos tempos tenho aprendido de perto como é a excelência operacional, como estagiário de melhoria contínua na Abbott. Estou no começo de tudo isso e tento ser honesto sobre o que sei e o que ainda estou descobrindo — mas eu apareço, levo as coisas até o fim e me importo mais em construir algo realmente útil do que algo apenas impressionante.
+Sou graduando em Engenharia de Produção na UFMG — cursei Engenharia de Controle e Automação até 2026/2 e depois mudei de curso — e, desde 2019, venho rodeando uma pergunta: como uma tecnologia realmente chega à pessoa que precisa dela? Esse fio atravessa o trabalho de que mais gosto — próteses e órteses, neuromodulação, estimulação elétrica funcional e interfaces cérebro–computador — e me ensinou a valorizar verificação, risco e rigor regulatório tanto quanto a ideia em si. Criei a NeuroDynamics, um grupo estudantil de P&D em healthtech que hoje reúne cerca de 40 pessoas, porque queria engenharia e saúde na mesma sala; nos últimos tempos tenho aprendido de perto como é a excelência operacional, como estagiário de melhoria contínua na Abbott. Estou no começo de tudo isso e tento ser honesto sobre o que sei e o que ainda estou descobrindo — mas eu apareço, levo as coisas até o fim e me importo mais em construir algo realmente útil do que algo apenas impressionante.
 
 ## Experiência
 
@@ -212,7 +212,8 @@ Página: https://marcondes.dev/cefet/tcc/
 
 ## Formação
 
-- Engenharia de Controle e Automação — Universidade Federal de Minas Gerais (UFMG) (Previsão 2028)
+- Engenharia de Produção — Universidade Federal de Minas Gerais (UFMG) (Em andamento)
+- Engenharia de Controle e Automação — Universidade Federal de Minas Gerais (UFMG) (2023 – 2026/2 · mudança para Engenharia de Produção)
 - Técnico em Mecatrônica — Centro Federal de Educação Tecnológica (CEFET-MG) (2022 · TCC sobre pés protéticos)
 
 ## Habilidades
